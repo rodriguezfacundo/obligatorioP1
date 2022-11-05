@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obligatorio</title>
+    <link rel="stylesheet" href="./css/btn.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/entities/solicitud.js"></script>
+    <script src="./js/entities/importador.js"></script>
+    <script src="./js/entities/viaje.js"></script>
+    <script src="./js/entities/empresa.js"></script>
+    <script src="./js/dataSource.js"></script>
+    <script src="./js/validations/validate.js"></script>
+    <script src="./js/ui/ui.js"></script>
+    <script src="./js/screens/rollover.js"></script>
+    <script src="./js/screens/rechazarSol.js"></script>
+    <script src="./js/screens/habilitarImp.js"></script>
+    <script src="./js/screens/estadisticasImportador.js"></script>
+    <script src="./js/screens/tableManifiesto.js"></script>
+    <script src="./js/screens/menuEmpresa.js"></script>
+    <script src="./js/screens/menuImportador.js"></script>
+    <script src="./js/screens/asignarBuque.js"></script>
+    <script src="./js/screens/cancelarSolicitud.js"></script>
+    <script src="./js/screens/solicitudPendiente.js"></script>
+    <script src="./js/screens/crearViaje.js"></script>
+    <script src="./js/screens/crearSolicitudCarga.js"></script>
+    <script src="./js/screens/loginImportador.js"></script>
+    <script src="./js/screens/register.js"></script>
+    <script src="./js/screens/loginEmpresa.js"></script>
+    <script src="./js/globales.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+    <header id="containerHeader">
+        <input id="btnInicio" class="btnPrimerEstilo" type="submit" value="Inicio">
+    </header>
+    <!-- Creamos el cartel de bienvenida, y eleccion de perfil -->
+    <div id="btnsPrincipal" class="buttons">
+        <h1 id="bienvenida">Bienvenido! <span class="span">Elija un perfil</span></h1>
+        <button id="btnImportador" class="fill">Importador</button>
+        <button id="btnEmpresa" class="raise">Empresa</button>
+    </div>
+
+    <!-- ------------------------IMPORTADOR--------------------------- -->
+    <!-- Formulario de registro -->
+    <form class="form-register" id="formRegistro">
+        <h4>Registrarse</h4>
+        <input class="controls" type="text" name="nombres" id="registName" placeholder="Ingrese su Nombre y Apellido">
+        <input class="controls" type="text" name="apellidos" id="usernameRegist" placeholder="Ingrese su Usuario">
+        <h6 class="parrafoImagen">Por Favor Elija Una Imagen</h6>
+        <label class="container">
+            <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen1" id="imagen1">
+            <img class="imgEmpresas" src="./img/empresa2.png" alt="">
+        </label>
+        <label class="container">
+            <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen2" id="imagen2">
+            <img class="imgEmpresas" src="./img/empresa3.png" alt="">
+        </label>
+        <label class="container">
+            <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen3" id="imagen3">
+            <img class="imgEmpresas" src="./img/empresa4.png" alt="">
+        </label>
+        <label class="container">
+            <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen4" id="imagen4">
+            <img class="imgEmpresas" src="./img/empresa6.jpg" alt="">
+        </label>
+        <input class="controls" type="password" name="correo" id="registPass" placeholder="Ingrese su Contraseña">
+        <p id="pErrorRegist"></p>
+        <input class="btnPrimerEstilo" id = "btnRegistrar" type="submit" value="Registrar">
+        <input class="btnTercerEstilo" id = "btnTengoCuenta" type="submit" value="Ya tengo cuenta">
+    </form>
+
+    <!-- Formulario de login -->
+    <form class="form-register" id="formLogin">
+        <h4>Inicio de Sesion</h4>
+        <input class="controls" type="text" name="nombres" id="inputUser" placeholder="Ingrese su Usuario">
+        <input class="controls" type="password" name="correo" id="inputPass" placeholder="Ingrese su Contraseña">
+        <p class="pError" id="pError"></p>
+        <input class="btnPrimerEstilo" id="btnLogin" type="submit" value="Iniciar Sesion">
+    </form>
+
+    <!-- MENU IMPORTADORES -->
+    <div class="importador" id="menuImportador">
+        <h4>MENU IMPORTADOR</h4>
+        <input id = "btnIrSolicitudCarga" class="btnSeptimoEstilo" type="submit" value="Crear Solicitud Carga">
+        <br />
+        <br />
+        <input id = "btnIrVerPendientes" class="btnSeptimoEstilo" type="submit" value="Solicitudes Pendientes">
+        <br />
+        <br />
+        <input id = "btnIrCancelar" class="btnSeptimoEstilo" type="submit" value="Cancelar Solicitud Pendiente">
+        <br />
+        <br />
+        <input id = "btnIrEstadisticas" class="btnSeptimoEstilo" type="submit" value="Estadisticas">
+    </div>
+
+    
+    <!-- SOLICITUD DE CARGA DE MERCADERIA -->
+    <form class="importador" id="formSolicitudCarga">
+        <h3 class="msgBienvenidaImportador" id="pBienvenida"></h3>
+        <h4>Solicitud Carga de Mercaderia</h4>
+        <select class="estiloCampos" id="tipoMercaderia">
+            <option value="" selected>Tipo De Mercaderia</option>
+            <option value="CARGA_GENERAL">Carga General</option>
+            <option value="REFRIGERADO">Refrigerado</option>
+            <option value="CARGA_PELIGROSA">Carga Peligrosa</option>
+        </select>
+        <br>
+        <br>
+        <label for="descripMercaderia">Descripcion de Mercaderia</label>
+        <br>
+        <br>
+        <input class="estiloCampos" type="text" id="descripMercaderia" placeholder="Breve descripcion">
+        <br>
+        <br>
+        <label for="inputOrigen">Puerto de Origen</label>
+        <br>
+        <br>
+        <input class="estiloCampos" type="text" id="inputOrigen" placeholder="Ej: Inglaterra">
+        <br>
+        <br>
+        <label for="cantidadContenedores">Cantidad de Contenedores</label>
+        <br>
+        <br>
+        <input class="estiloCampos" id="cantidadContenedores" type="number" placeholder="Ej: 4">
+        <input class="btnSegundoEstilo"  id = "btnSolicitarCarga"  type="submit" value="Solicitar Carga">
+        <input id="btnVolverSolicitud" class="btnSextoEstilo" type="submit" value="Atras">
+        <p id="errMsgSolcitudCarga"></p>
+    </form>
+
+    <!-- Buscar Solicitudes Pendientes-->
+    <form class="importador" id="solicitudCreada">
+        <h4>Sus Solicitudes Pendientes</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Estado</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+        <tbody class="" id="tablaPendientes"></tbody>
+        </table>
+        <h4>Buscar una Solicitud</h4>
+        <input class="estiloCampos" type="text" id="inputBuscarSolicitud" placeholder="Breve descripcion">
+        <input id="btnBuscar" class = "btnTercerEstilo" type="submit" value="Buscar">
+        <p id="pSolicitudCreada"></p>
+        <p id="pErrorBuscar"></p>
+        <input id="btnVolverPendientes" class="btnSextoEstilo" type="submit" value="Volver">
+    </form> 
+    
+    <!-- CANCELAR SOLICITUDES PENDIENTES -->
+    <div class="importador" id="formCancelarSolicitud">
+        <h4>Cancelar Solicitud Pendiente</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Solicitud</th>
+                    <th>Cambiar Estado</th>
+                </tr>
+            </thead>
+        <tbody class="" id="tablaCancelar"></tbody>
+        </table>
+        <input id="btnVolverCancelar" class="btnSextoEstilo" type="submit" value="Volver">
+    </div> 
+
+    <!-- ESTADISTICAS -->
+    <div class="importador" id="dashboardEstadisticas">
+        <h4>Informacion Estadistica</h4>
+        <p>Porcentaje de cancelaciones contra el total de cargas: 34%</p>
+        <br>
+        <br>
+        <h4>Proximas llegadas de su solicitud</h4>
+        <p>1. AAAA/MM/DD</p>
+        <p>2. AAAA/MM/DD</p>
+        <p>3. AAAA/MM/DD</p>
+        <br>
+        <br>
+        <h4>Porcentajes de Empresas Solicitadas</h4>
+        <p>Empresa 1: 20%</p>
+        <p>Empresa 2: 50%</p>
+        <p>Empresa 3: 30%</p>
+    </div>
+
+
+
+
+
+    <!-- ------------------------EMPRESA--------------------------- -->
+
+    <!-------------------------- MENU EMPRESAS------------------------ -->
+    <div class="empresa" id="menuEmpresa">
+        <h4>MENU EMPRESA</h4>
+        <input id = "btnIrCrearViaje" class="btnSeptimoEstilo" type="submit" value="Crear Viaje">
+        <br />
+        <br />
+        <input id = "btnIrAsignarBuque" class="btnSeptimoEstilo" type="submit" value="Asignar Buque a Solicitud de carga">
+        <br />
+        <br />
+        <input id = "btnIrRollover" class="btnSeptimoEstilo" type="submit" value="Rollover de carga">
+        <br />
+        <br />
+        <input id = "btnIrVerPendientesEmpresa" class="btnSeptimoEstilo" type="submit" value="Solicitudes Pendientes">
+        <br />
+        <br />
+        <input id = "btnIrHabilitarImp" class="btnSeptimoEstilo" type="submit" value="Habilitar Importador">
+        <br />
+        <br />
+        <input id = "btnIrManifiesto" class="btnSeptimoEstilo" type="submit" value="Manifiesto de carga">
+    </div>
+
+
+
+    <!-- CREACION DE VIAJE DE BUQUE -->
+    <form class="empresa" id="formCrearViaje">
+        <h3 class="msgBienvenidaEmpresa" id="pBienvenida"></h3>
+        <br>
+        <br>
+        <h4>Crear Viaje de Buque</h4>
+        <label for="inputNombreBuque">Nombre del Buque</label>
+        <br>
+        <br>
+        <input class="estiloCampos" type="text" id="inputNombreBuque" placeholder="Ingrese el nombre">
+        <br>
+        <br>
+        <label for="inputCantidadContenedores">Cantidad maxima de contenedores</label>
+        <br>
+        <br>
+        <input class="estiloCampos" type="number" id="inputCantidadContenedores" placeholder="Ej: 6">
+        <br>
+        <br>
+        <input class="estiloCampos" type="text" id="inputNombreEmpresa" placeholder="Nombre de empresa registrada">
+        <br>
+        <br>
+        <label for="inputFechaLlegada">Fecha de Llegada</label>
+        <br>
+        <br>
+        <input class="estiloCampos" type="text" id="inputFechaLlegada" placeholder="Ej: AAAA/MM/DD">
+        <br>
+        <br>
+        <label for="inputNumeroReferencia">Numero de Referencia de Viaje</label>
+        <br>
+        <br>
+        <input class="estiloCampos" type="number" id="inputNumeroReferencia" placeholder="Ej: 1">
+        <input id="btnCrearNuevoViaje" class="btnQuintoEstilo" type="submit" value="Crear Viaje">
+        <input id="btnBackCrearViaje" class="btnSextoEstilo" type="submit" value="Atras">
+        <p id="pErrorViaje"></p>
+    </form>
+
+    
+    
+    <!-- -----------------ASIGNAR UNA SOLICITUD PENDIENTE A UN VIAJE DE BUQUE PARA MONTEVIDEO ------------>
+    <div class="empresa" id="formAsignarBuque">
+        <h4>Asignar Buque a Solicitud de Carga</h4>
+        <select class="estiloCampos" id="selectSolicitudCarga">
+            <option value="" selected>Elegir Solicitud</option>
+        </select>
+        
+        <select class="estiloCampos" id="selectViaje">
+            <option value="" selected>Seleccionar Buque</option>
+        </select>
+        <input id = "btnAsignarViaje" class="btnQuintoEstilo" type="submit" value="Asignar Viaje">
+        <input id="btnBackAsignarBuque" class="btnSextoEstilo" type="submit" value="Atras">
+    </div>
+    
+    
+    <!-- ------------------------ROLLOVER-------------------------- -->
+    <div class="empresa" id="formRollover">
+        <h4>REMPLAZAR EL BUQUE DE UN VIAJE</h4>
+        <select class="estiloCampos" id="selecRollover">
+            <option value="" selected>Seleccionar Viaje</option>
+            <option value="importador1" selected>Importador 1</option>
+            <option value="importador2" selected>Importador 2</option>
+            <option value="importador3" selected>Importador 3</option>
+        </select>
+        <select class="estiloCampos" id="selecRollover">
+            <option value="" selected>Asignar Nuevo Buque</option>
+            <option value="importador1" selected>Empresa 1</option>
+            <option value="importador2" selected>Empresa 2</option>
+            <option value="importador3" selected>Empresa 3</option>
+        </select>
+        <input id = "btnRollover" class="btnCuartoEstilo" type="submit" value="Crear Rollover">
+        <input id="btnBackRollover" class="btnSextoEstilo" type="submit" value="Atras">
+    </div>
+
+
+
+    <!-- -----------RECHAZAR UNA SOLICITUD DE CARGA PENDIENTE PENDIENTE -------------------->
+    <div class="empresa" id="formRechazarSolicitud">
+        <h4>Cancelar Solicitud Pendiente</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Solicitud</th>
+                    <th>Cambiar Estado</th>
+                </tr>
+            </thead>
+        <tbody class="" id="tablaRechazar"></tbody>
+        </table>
+        <input id="btnVolverRechazar" class="btnSextoEstilo" type="submit" value="Volver">
+    </div> 
+
+
+
+    <!-- -------------------------MANIFIESTO-------------------------- -->
+    <div class ="containerTable" id="tablaManifiesto">
+            <table>
+			    <thead>
+				    <tr>
+					    <th>Origen</th>
+                        <th>Cantidad</th>
+                        <th>Importador</th>
+                        <th>Descripcion</th>
+                        <th>Tipo Mercaderia</th>
+                    </tr>
+			    </thead>
+
+			    <tr>
+				    <td>ESP</td>
+                    <td>6</td>
+                    <td>Pepe</td>
+                    <td>Juguetes</td>
+                    <td>General</td>
+			    </tr>
+			    <tr>
+				    <td>ARG</td>
+                    <td>12</td>
+                    <td>Lorenzo</td>
+                    <td>Carne</td>
+                    <td>Refrigerada</td>
+			    </tr>
+			    <tr>
+				    <td>ING</td>
+                    <td>4</td>
+                    <td>Carl</td>
+                    <td>Acido</td>
+                    <td>Peligrosa</td>
+			    </tr>
+		    </table>
+            <input id="btnBackManifiesto" class="btnSextoEstilo" type="submit" value="Atras">
+	    </div>
+        
+
+
+
+
+        <!-- ------------------HABILITAR IMPORTADOR DESHABILITADO------------------------ -->
+    <div class="main-container" id = "containerTablaHabilitar">
+            <h4>Habilitar Importadores</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Cambiar Estado</th>
+                    </tr>
+                </thead>
+            <tbody class="" id="tablaHabilitar"></tbody>
+            </table>
+            <input id="btnVolverHabilitar" class="btnSextoEstilo" type="submit" value="Volver">
+    </div>
+    
+
+
+
+        <!-- -------------------- CARGA PELIGROSA------------------------------- -->
+    <div class="empresa" id="tablaCargPeligrosa">
+        <h4>Informe de Carga Peligrosa</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Importador</th>
+                    <th>Mercaderia</th>
+                </tr>
+            </thead>
+            <tr>
+				<td>Pepe</td>
+                <td>Acido</td>
+			</tr>
+            <tr>
+				<td>Ignacio</td>
+                <td>Explosivos</td>
+			</tr>
+        </table>
+        <input class="btnVerPendientes" type="button" value="Enviar a Autoridades">
+        <input id="btnBackPeligrosa" class="btnSextoEstilo" type="submit" value="Atras">
+    </div>
+
+</body>
+</html>

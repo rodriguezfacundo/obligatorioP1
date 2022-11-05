@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: url('fondo.jpg');
+  }
+  
+  .form-register {
+    width: 400px;
+    background: #24303c;
+    padding: 30px;
+    margin: auto;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+  }
+  
+  .form-register h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .span{
+    color: yellow;
+  }
+
+  .controls {
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #1f53c5;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+  }
+  
+  .form-register p {
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+  }
+  
+  .form-register a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .form-register a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .form-register .botons {
+    width: 100%;
+    background: #1f53c5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+  }
+
+  .imgEmpresas{
+    width: 50px;
+    height: 50px;
+    border-radius: 50% 50%;
+  }
+  .imgEmpresas:hover {
+    filter: grayscale(80%);
+    transition: 0.4s;  }
+
+  .parrafoImagen{
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #1f53c5;
+  }
+
+  .importador{
+    width: 400px;
+    background: #24303c;
+    padding: 30px;
+    margin: auto;
+    /* margin-top: 100px; */
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+  }
+
+  .empresa{
+    width: 400px;
+    background: #24303c;
+    padding: 30px;
+    margin: auto;
+    /* margin-top: 100px; */
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+  }
+
+  .importador h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: rgb(174, 221, 208);
+  }
+
+  .estiloCampos {
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #cb1061;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+  }
+
+  .inputBuscarSolicitud{
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #cb1061;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+  }
+
+
+
+.btnSegundoEstilo{
+      width: 100%;
+      background: #1f53c5;
+      border: none;
+      padding: 12px;
+      color: white;
+      margin: 16px 0;
+      font-size: 16px;
+}
+.btnSegundoEstilo:hover{
+  background-color: #000;
+  color: white;
+  transition: 0.2s ease-in;
+}
+
+.btnCuartoEstilo{
+    width: 100%;
+    background: #020916;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+}
+.btnCuartoEstilo:hover{
+  background-color: #000;
+  color: white;
+  transition: 0.2s ease-in;
+}
+
+
+.btnPrimerEstilo{
+  width: 100%;
+  background: #1f53c5;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+.btnPrimerEstilo:hover{
+  background-color: #000;
+  color: white;
+  transition: 0.2s ease-in;
+}
+
+
+.btnTercerEstilo{
+  width: 100%;
+  background: rgb(125, 16, 16);
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+.btnTercerEstilo:hover{
+  background-color: white;
+  color: rgb(125, 16, 16);
+  transition: 0.2s ease-in;
+}
+
+
+.btnQuintoEstilo{
+  width: 100%;
+  background: red;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.btnQuintoEstilo:hover{
+  background-color: black;
+  color: wheat;
+  transition: 0.2s ease-in;
+}
+
+.btnSextoEstilo{
+  width: 100%;
+  background: yellow;
+  border: none;
+  padding: 12px;
+  color: black;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.btnSextoEstilo:hover{
+  background-color: white;
+  color: black;
+  transition: 0.2s ease-in;
+}
+
+.btnSeptimoEstilo{
+  width: 100%;
+  background: #4f8736;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.btnSeptimoEstilo:hover{
+  background-color: white;
+  color: #4f8736;
+  transition: 0.2s ease-in;
+}
+
+
+
+.empresa h4{
+  font-size: 22px;
+    margin-bottom: 20px;
+}
+
+
+
+body{
+	font-family: Arial;
+}
+
+.containerTable{
+	margin: 150px auto;
+	width: 600px;
+}
+
+table{
+	background-color: #24303c;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: #246355;
+	border-bottom: solid 5px #0F362D;
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #24303c;
+}
+
+
+.pError{
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#pErrorRegist{
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.msgBienvenidaEmpresa{
+  color: aqua;
+  font-weight: bold;
+}
+
+.yaTengoCuenta{
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10;
+  color: white;
+  margin: 16px 0;
+  font-size: 15px;
+}
+
+.yaTengoCuenta:hover{
+  transition: 0.1s ease-in;
+  font-size: 20px;
+}
+
+/* OCULTAMOS TODOS LOS FORMS */
+#formRegistro{
+  display: none;
+}
+
+#formLogin{
+  display: none;
+}
+
+#formSolicitudCarga{
+  display: none;
+}
+
+#solicitudCreada{
+  display: none;
+}
+
+#formMostrarPendientes{
+  display: none;
+}
+
+#formCancelarSolicitud{
+  display: none;
+}
+
+#dashboardEstadisticas{
+  display: none;
+}
+
+#formCrearViaje{
+  display: none;
+}
+
+#formAsignarBuque{
+  display: none;
+}
+
+#formRollover{
+  display: none;
+}
+
+#tablaManifiesto{
+  display: none;
+}
+
+#containerTablaHabilitar{
+  display: none;
+}
+
+#tablaCargPeligrosa{
+  display: none;
+}
+
+#menuEmpresa{
+  display: none;
+}
+
+#menuImportador{
+  display: none;
+}
+
+#containerHeader{
+  display: none;
+}
+
+#formRechazarSolicitud{
+  display: none;
+}
+
