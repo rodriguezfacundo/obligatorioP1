@@ -8,6 +8,6 @@ class Solicitud{
         this.estado = 'PENDIENTE';
         this.idImportador = userImportadorLogged.id;
         this.idEmpresa = null;
-        // this.idViaje = idViaje;
+        this.idViaje = null;
     }
 }
