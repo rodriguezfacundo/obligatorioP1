@@ -28,7 +28,6 @@ const viajeFormValidations = [
 
 function mountCrearViaje(){
     changeVisibility('#formCrearViaje','block');
-    // welcomeMsg(userLogged.nombre);
 
     const btnCrearViaje = document.querySelector('#btnCrearNuevoViaje');
     btnCrearViaje.addEventListener('click', onCrearViaje);

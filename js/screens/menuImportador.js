@@ -1,6 +1,6 @@
 function mountMenuImportador() {
     changeVisibility('#menuImportador','block');
-
+    welcomeMsg(userImportadorLogged.nombre);
     const btnIrSolicitudCarga = document.querySelector('#btnIrSolicitudCarga');
     btnIrSolicitudCarga.addEventListener('click', onIrSolicitudCarga);
 

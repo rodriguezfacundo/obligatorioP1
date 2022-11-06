@@ -43,7 +43,7 @@
         <button id="btnEmpresa" class="raise">Empresa</button>
     </div>
 
-    <!-- ------------------------IMPORTADOR--------------------------- -->
+    <!-- ----------------------------------------IMPORTADOR------------------------------------------------------ -->
     <!-- Formulario de registro -->
     <form class="form-register" id="formRegistro">
         <h4>Registrarse</h4>
@@ -84,6 +84,7 @@
     <!-- MENU IMPORTADORES -->
     <div class="importador" id="menuImportador">
         <h4>MENU IMPORTADOR</h4>
+        <h3 class="msgBienvenidaImportador" id="pBienvenida"></h3>
         <input id = "btnIrSolicitudCarga" class="btnSeptimoEstilo" type="submit" value="Crear Solicitud Carga">
         <br />
         <br />
@@ -99,7 +100,6 @@
     
     <!-- SOLICITUD DE CARGA DE MERCADERIA -->
     <form class="importador" id="formSolicitudCarga">
-        <h3 class="msgBienvenidaImportador" id="pBienvenida"></h3>
         <h4>Solicitud Carga de Mercaderia</h4>
         <select class="estiloCampos" id="tipoMercaderia">
             <option value="" selected>Tipo De Mercaderia</option>
@@ -130,9 +130,9 @@
         <p id="errMsgSolcitudCarga"></p>
     </form>
 
-    <!-- Buscar Solicitudes Pendientes-->
+    <!-- Solicitudes Pendientes, y buscador de solicitudes-->
     <form class="importador" id="solicitudCreada">
-        <h4>Sus Solicitudes Pendientes</h4>
+        <h4>Solicitudes Pendientes</h4>
         <table>
             <thead>
                 <tr>
@@ -143,11 +143,15 @@
             </thead>
         <tbody class="" id="tablaPendientes"></tbody>
         </table>
+        <br>
+        <hr>
+        <br>
         <h4>Buscar una Solicitud</h4>
         <input class="estiloCampos" type="text" id="inputBuscarSolicitud" placeholder="Breve descripcion">
-        <input id="btnBuscar" class = "btnTercerEstilo" type="submit" value="Buscar">
-        <p id="pSolicitudCreada"></p>
-        <p id="pErrorBuscar"></p>
+        <ul id="pSolicitudEncontrada">
+            <li></li>
+        </ul>
+        <input id="btnBuscar" class = "btnCuartoEstilo" type="submit" value="Buscar">
         <input id="btnVolverPendientes" class="btnSextoEstilo" type="submit" value="Volver">
     </form> 
     
@@ -194,6 +198,7 @@
     <!-------------------------- MENU EMPRESAS------------------------ -->
     <div class="empresa" id="menuEmpresa">
         <h4>MENU EMPRESA</h4>
+        <h3 id="#pBienvenida"></h3>
         <input id = "btnIrCrearViaje" class="btnSeptimoEstilo" type="submit" value="Crear Viaje">
         <br />
         <br />
@@ -216,9 +221,6 @@
 
     <!-- CREACION DE VIAJE DE BUQUE -->
     <form class="empresa" id="formCrearViaje">
-        <h3 class="msgBienvenidaEmpresa" id="pBienvenida"></h3>
-        <br>
-        <br>
         <h4>Crear Viaje de Buque</h4>
         <label for="inputNombreBuque">Nombre del Buque</label>
         <br>
@@ -265,6 +267,7 @@
         <select class="estiloCampos" id="selectViaje">
             <option value="" selected>Seleccionar Buque</option>
         </select>
+        <p id="pHecho"></p>
         <input id = "btnAsignarViaje" class="btnQuintoEstilo" type="submit" value="Asignar Viaje">
         <input id="btnBackAsignarBuque" class="btnSextoEstilo" type="submit" value="Atras">
     </div>

@@ -20,7 +20,6 @@ function onMostrarLogin(){
     changeVisibility('#btnsPrincipal', 'none');
     changeVisibility('#formLogin', 'block');
     
-    //Evento click al boton de iniciar sesion de empresa
     const btnLogin = document.querySelector('#btnLogin');
     btnLogin.addEventListener('click', onLoggedEmpresa);
 }

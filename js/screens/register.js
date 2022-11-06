@@ -68,7 +68,6 @@ function onRegistrar(e){
 }
 
 
-//Funcion para ocultar el formulario de registro.
 function onMountRegister(){
     changeVisibility('#formRegistro', 'none');
 }

@@ -9,6 +9,8 @@ function mountSolicitudesPendientes(){
     btnVolver.addEventListener('click', onVolverPendientes);
 }
 
+
+//Funcion que me dibuja las solicitudes pendientes que se encuentren
 function buildTablePendientes(){
     const tablaPendientes = document.querySelector('#tablaPendientes');
     tablaPendientes.innerHTML = '';
@@ -26,34 +28,31 @@ function buildTablePendientes(){
     });
 }
 
+//Funcion que busca una solicitud creada no importa su estado.
 function onBuscar(e){
     e.preventDefault();
-    const containerForm = document.querySelector('#solicitudCreada');
 
-    const txtBuscar = document.querySelector('#inputBuscarSolicitud').value.toLowerCase();
-    const pError = document.querySelector('#pErrorBuscar');
+    const textoIngresado = document.querySelector('#inputBuscarSolicitud');
+    const solicitudEncontrada = document.querySelector('#pSolicitudEncontrada');
+
+    solicitudEncontrada.innerHTML = '';
+    const texto = textoIngresado.value.toLowerCase();
 
     solicitudes.forEach(function(solicitud){
-        if (solicitud.descripcion === txtBuscar){
-            mostrarSolicitudPendiente();
-            containerForm.reset();
-        }
-        else{
-            pError.innerHTML = 'No existe esa solicitud'
+        let nombre = solicitud.descripcion.toLowerCase();
+        if (nombre.indexOf(texto) !== -1) {
+            solicitudEncontrada.innerHTML += `
+            <li>${solicitud.descripcion} - Estado: ${solicitud.estado}</li>
+            `
         }
     });
+
+    if (solicitudEncontrada.innerHTML === ''){
+        solicitudEncontrada.innerHTML = 'Solicitud no encontrada :(';
+    }
+
 }
 
-function mostrarSolicitudPendiente(selector){
-    const pSolicitudCreada = document.querySelector('#pSolicitudCreada');
-    solicitudes.forEach(function(solicitud){
-        pSolicitudCreada.innerHTML += `
-        <b>Contenido de su solicitud de carga:</b> ${solicitud.descripcion.toUpperCase()} <br>
-        <b>Origen:</b> ${solicitud.origen} <br>
-        <b>Cantidad de contenedores:</b> ${solicitud.cantidadContenedores} <br>
-        `
-    });
-}
 
 function onMountPendientes(){
     changeVisibility('#solicitudCreada', 'none');

@@ -12,6 +12,7 @@ function mountAsignarBuque() {
 
 function mostrarSolicitudAsignar(){
     const selectSolicitud = document.querySelector('#selectSolicitudCarga')
+    selectSolicitud.innerHTML = '';
     solicitudes.forEach(function (solicitud){
         if (solicitud.estado === 'PENDIENTE'){
             selectSolicitud.innerHTML +=`
@@ -23,6 +24,7 @@ function mostrarSolicitudAsignar(){
 
 function mostrarViajeCreado(){
     const selectViaje = document.querySelector('#selectViaje')
+    selectViaje.innerHTML = '';
     for (let i = 0; i < empresas.length; i++){
         empresas[i].viajes.forEach(function (viaje){
             if (viaje){

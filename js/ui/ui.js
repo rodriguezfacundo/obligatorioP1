@@ -3,15 +3,8 @@ function changeVisibility(selector, display){
 }
 
 function welcomeMsg(user){
-    document.querySelector('#pBienvenida').innerHTML = `Bienvenido ${user}`;
+    document.querySelector('#pBienvenida').innerHTML = user;
 }
-
-// function bienvenidoImportador(){
-//     document.querySelector('#bienvenidaImportador').innerHTML = userImportadorLogged.nombre.toUpperCase();
-// }
-
-
-
 
 function errDatosIncorrectos(){
     document.querySelector('#pError').innerHTML = 'Datos incorrectos';

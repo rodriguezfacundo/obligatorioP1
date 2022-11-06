@@ -22,9 +22,7 @@ const solicitudFormValidations = [
 ]
 
 function mountCrearSolicitudCarga(){
-    
     changeVisibility('#formSolicitudCarga', 'block');
-    // welcomeMsg(userImportadorLogged.nombre);
 
     const btnEnviarSolicitud = document.querySelector('#btnSolicitarCarga');
     btnEnviarSolicitud.addEventListener('click', onEnviarSolicitud);
@@ -38,7 +36,7 @@ function onEnviarSolicitud(e){
     const containerForm = document.querySelector('#formSolicitudCarga');
 
     const tipoMercaderia = document.querySelector('#tipoMercaderia').value;
-    const descripcion = document.querySelector('#descripMercaderia').value.toLowerCase();
+    const descripcion = document.querySelector('#descripMercaderia').value;
     const origen = document.querySelector('#inputOrigen').value;
     const cantidadContenedores = Number(document.querySelector('#cantidadContenedores').value);
     const msgErrorSolcitudCarga = document.querySelector('#errMsgSolcitudCarga');

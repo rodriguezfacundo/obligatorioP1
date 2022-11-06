@@ -1,5 +1,6 @@
 function mountMenuEmpresa() {
     changeVisibility('#menuEmpresa','block');
+    welcomeMsg(userLogged.nombre);
 
     const btnIrCrearViaje = document.querySelector('#btnIrCrearViaje');
     btnIrCrearViaje.addEventListener('click', onIrCrearViaje);
