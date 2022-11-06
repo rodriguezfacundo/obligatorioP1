@@ -7,6 +7,11 @@ const registerFormValidations = [
     {
         id: '#usernameRegist',
         errMsg: 'Ingresa un usuario valido',
+        fnValidate: isNotEmpty,
+    },
+    {
+        id: '#usernameRegist',
+        errMsg: 'Ingresa un usuario valido',
         fnValidate: isValidImportador,
     },
     {
