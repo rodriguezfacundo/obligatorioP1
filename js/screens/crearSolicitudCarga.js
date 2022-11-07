@@ -19,6 +19,11 @@ const solicitudFormValidations = [
         errMsg: 'Ingresar cantidad de contenedores',
         fnValidate: isValidNumber,
     },
+    {
+        id: '#cantidadContenedores',
+        errMsg: 'Ingresar cantidad de contenedores',
+        fnValidate: isNotEmpty,
+    },
 ]
 
 function mountCrearSolicitudCarga(){

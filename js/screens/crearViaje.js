@@ -6,8 +6,13 @@ const viajeFormValidations = [
     },
     {
         id: '#inputCantidadContenedores',
-        errMsg: 'Ingrese cantidad de contenedores',
+        errMsg: 'Ingrese un valor numerico',
         fnValidate: isValidNumber,
+    },
+    {
+        id: '#inputCantidadContenedores',
+        errMsg: 'Ingrese cantidad de contenedores',
+        fnValidate: isNotEmpty,
     },
     {
         id: '#inputNombreEmpresa',
@@ -22,6 +27,11 @@ const viajeFormValidations = [
     {
         id: '#inputNumeroReferencia',
         errMsg: 'Ingrese un numero de viaje',
+        fnValidate: isValidNumber,
+    },
+    {
+        id: '#inputNumeroReferencia',
+        errMsg: 'Ingrese un valor numerico',
         fnValidate: isValidNumber,
     },
 ]
