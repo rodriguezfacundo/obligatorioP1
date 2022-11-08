@@ -335,6 +335,9 @@ tr:nth-child(even){
   display: none;
 }
 
+#btnsPrincipal{
+  display: block;
+}
 #formMostrarPendientes{
   display: none;
 }

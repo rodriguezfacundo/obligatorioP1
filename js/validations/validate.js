@@ -2,10 +2,10 @@
  * Recibe como parametro un string
  * @param {string} txt 
  * @returns boolean
- * valida que ese campo de texto sea mayor a 2 caracteres
+ * valida que ese campo de texto no sea una cadena vacia
  */
 function isNotEmpty(txt){
-    return txt.length > 2;
+    return txt.length > 0;
 }
 
 /**

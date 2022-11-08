@@ -11,12 +11,12 @@ const solicitudFormValidations = [
     },
     {
         id: '#inputOrigen',
-        errMsg: 'Ingresa un pais de origen',
+        errMsg: 'Ingresa el pais de origen',
         fnValidate: isNotEmpty,
     },
     {
         id: '#cantidadContenedores',
-        errMsg: 'Ingresar cantidad de contenedores',
+        errMsg: 'La cantidad debe ser numerica',
         fnValidate: isValidNumber,
     },
     {

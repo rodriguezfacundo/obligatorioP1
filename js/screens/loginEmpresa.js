@@ -11,13 +11,8 @@ const loginFormValidations = [
     },
 ];
 
-function mountLogin(){
-    const btnEmpresa = document.querySelector('#btnEmpresa');
-    btnEmpresa.addEventListener('click', onMostrarLogin);
-}
-
 function onMostrarLogin(){
-    changeVisibility('#btnsPrincipal', 'none');
+    ocultarElegirPerfil();
     changeVisibility('#formLogin', 'block');
     
     const btnLogin = document.querySelector('#btnLogin');

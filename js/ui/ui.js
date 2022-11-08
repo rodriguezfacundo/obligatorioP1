@@ -9,3 +9,10 @@ function welcomeMsg(user){
 function errDatosIncorrectos(){
     document.querySelector('#pError').innerHTML = 'Datos incorrectos';
 }
+
+
+function irInicio(){
+    elegirPerfil();
+    ocultarMenuImportador();
+    onMountMenuEmpresa();
+}

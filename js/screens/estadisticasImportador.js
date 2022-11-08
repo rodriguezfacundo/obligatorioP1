@@ -1,15 +1,13 @@
 function mountEstadisticas(){
-    changeVisibility('#dashboardEstadisticas', 'block');
-    changeVisibility('#containerHeader', 'block');
+    changeVisibility('#dashboardEstadisticas', 'block')
 
-    const btnInicio = document.querySelector('#btnInicio');
-    btnInicio.addEventListener('click', onInicioImportador);
+    const btnVolverEstadisticas = document.querySelector('#btnVolverEstadisticas');
+    btnVolverEstadisticas.addEventListener('click', onVolverEstadisticas);
 }
 
-function onInicioImportador(){
-    changeVisibility('#containerHeader', 'none');
-    changeVisibility('#btnsPrincipal', 'block');
+function onVolverEstadisticas(){
     onMountEstadisticas();
+    mountMenuImportador();
 }
 
 function onMountEstadisticas(){

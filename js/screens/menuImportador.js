@@ -12,6 +12,9 @@ function mountMenuImportador() {
     
     const btnIrEstadisticas = document.querySelector('#btnIrEstadisticas');
     btnIrEstadisticas.addEventListener('click', onIrEstadisticas);
+
+    const btnIrInicioImportador = document.querySelector('#btnIrInicioImportador');
+    btnIrInicioImportador.addEventListener('click', irInicio)
 }
 
 function onIrSolicitudCarga() {

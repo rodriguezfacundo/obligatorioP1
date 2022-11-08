@@ -6,12 +6,12 @@ const registerFormValidations = [
     },
     {
         id: '#usernameRegist',
-        errMsg: 'Ingresa un usuario valido',
+        errMsg: 'Ingresa un usuario',
         fnValidate: isNotEmpty,
     },
     {
         id: '#usernameRegist',
-        errMsg: 'Ingresa un usuario valido',
+        errMsg: 'Usuario ya registrado',
         fnValidate: isValidImportador,
     },
     {
@@ -21,14 +21,8 @@ const registerFormValidations = [
     },
 ]
 
-
-function mountRegistro(){
-    const btnImportador = document.querySelector('#btnImportador');
-    btnImportador.addEventListener('click', onMostrarRegistro);
-}
-
 function onMostrarRegistro(){
-    changeVisibility('#btnsPrincipal', 'none');
+    ocultarElegirPerfil();
     changeVisibility('#formRegistro', 'block');
     
     //Evento click al boton de registrar

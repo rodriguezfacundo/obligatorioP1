@@ -19,6 +19,9 @@ function mountMenuEmpresa() {
 
     const btnIrRechazar = document.querySelector('#btnIrVerPendientesEmpresa');
     btnIrRechazar.addEventListener('click', onIrRechazar)
+
+    const btnIrInicioEmpresa = document.querySelector('#btnIrInicioEmpresa');
+    btnIrInicioEmpresa.addEventListener('click', irInicio)
 }
 
 function onIrCrearViaje() {
