@@ -15,7 +15,7 @@ function buildTableRechazar(){
         if (solicitud.estado === 'PENDIENTE') {
             tablaRechazar.innerHTML += `
             <tr>
-            <th scope="row">${solicitud.id}</th>
+            <th>${solicitud.id}</th>
                 <td>${solicitud.descripcion.toUpperCase()}</td>
                 <td>
                     <button class="btnRechazar btnQuintoEstilo" data-id="${solicitud.id}">Rechazar</button>

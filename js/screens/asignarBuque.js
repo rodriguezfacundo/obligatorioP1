@@ -1,7 +1,6 @@
 function mountAsignarBuque() {
     changeVisibility('#formAsignarBuque', 'block');
     mostrarSolicitudAsignar();
-    mostrarViajeCreado();
 
     const btnAsignarBuque = document.querySelector('#btnAsignarViaje');
     btnAsignarBuque.addEventListener('click', onAsignarBuque);
@@ -10,8 +9,28 @@ function mountAsignarBuque() {
     btnBack.addEventListener('click', onBackAsignarBuque);
 }
 
+function onAsignarBuque(){
+    alert('viaje asignado');
+}
+
 function mostrarSolicitudAsignar(){
-    const selectSolicitud = document.querySelector('#selectSolicitudCarga')
+    const selectSolicitud = document.querySelector('#selectSolicitudCarga');
+
+    const selectViaje = document.querySelector('#selectViaje');
+    
+    for (let i = 0; i < solicitudes.length; i++){
+        if (solicitudes[i].estado === 'PENDIENTE'){
+            selectSolicitud.innerHTML += `
+            <option value="${solicitudes[i].cantidadContenedores}">${solicitudes[i].descripcion}</option>
+            `
+        }
+        for (let b = 0; b < empresas.length ; b++){
+            empresas[b].viajes.forEach(function (viaje){
+
+            });
+        }
+    }
+    /*const selectSolicitud = document.querySelector('#selectSolicitudCarga')
     selectSolicitud.innerHTML = '';
     solicitudes.forEach(function (solicitud){
         if (solicitud.estado === 'PENDIENTE'){
@@ -32,18 +51,13 @@ function mostrarViajeCreado(){
                 <option value="${viaje.id}">${viaje.nro}</option>
                 `
             }
-        })
-    }
-    
+        });
+    }*/
 }
+
 
 function onBackAsignarBuque(){
     onMountAsignarBuque();
-    mountMenuEmpresa();
-}
-
-function onAsignarBuque(){
-    changeVisibility('#formAsignarBuque', 'none')
     mountMenuEmpresa();
 }
 
