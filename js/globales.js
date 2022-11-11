@@ -3,6 +3,8 @@ let userLogged = null;
 let userRegistered = null;
 let solicitudCreada = null;
 let newID = null;
+let solicitudIdEmpresa = null;
+let solicitudIdViaje = null;
 
 function solicitudElegida(arr){
     let miId = null;
