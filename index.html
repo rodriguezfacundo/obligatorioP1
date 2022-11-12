@@ -245,7 +245,7 @@
         <label for="inputFechaLlegada">Fecha de Llegada</label>
         <br>
         <br>
-        <input class="estiloCampos" type="text" id="inputFechaLlegada" placeholder="Ej: AAAA/MM/DD">
+        <input class="estiloCampos" type="date" id="inputFechaLlegada">
         <br>
         <br>
         <label for="inputNumeroReferencia">Numero de Referencia de Viaje</label>
@@ -281,19 +281,13 @@
     <!-- ------------------------ROLLOVER-------------------------- -->
     <div class="empresa" id="formRollover">
         <h4>REMPLAZAR EL BUQUE DE UN VIAJE</h4>
-        <select class="estiloCampos" id="selecRollover">
+        <select class="estiloCampos" id="selectSolicitudRollover">
             <option value="" selected>Seleccionar Viaje</option>
-            <option value="importador1" selected>Importador 1</option>
-            <option value="importador2" selected>Importador 2</option>
-            <option value="importador3" selected>Importador 3</option>
         </select>
-        <select class="estiloCampos" id="selecRollover">
+        <select class="estiloCampos" id="selectViajeRollover">
             <option value="" selected>Asignar Nuevo Buque</option>
-            <option value="importador1" selected>Empresa 1</option>
-            <option value="importador2" selected>Empresa 2</option>
-            <option value="importador3" selected>Empresa 3</option>
         </select>
-        <input id = "btnRollover" class="btnCuartoEstilo" type="submit" value="Crear Rollover">
+        <input id = "btnClickRollover" class="btnCuartoEstilo" type="submit" value="Crear Rollover">
         <input id="btnBackRollover" class="btnSextoEstilo" type="submit" value="Atras">
     </div>
 

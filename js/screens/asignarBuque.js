@@ -12,30 +12,32 @@ function mountAsignarBuque() {
 function onAsignarBuque(){
     const selectViaje = Number(document.querySelector('#selectViaje').value)
     const selectSolicitud = Number(document.querySelector('#selectSolicitudCarga').value);
-    let esPermitido = 'EXCEDE EL PERMITIDO';
+    let esPermitido = 'EXCEDE LA CANTIDAD DISPONIBLE';
 
         for (let b = 0; b < empresas.length; b++){
             empresas[b].viajes.forEach(function (viaje){
                 for (let i = 0; i < solicitudes.length; i++){
-                    if(solicitudes[i].id === selectSolicitud){
-                        if (viaje.cantidadMaxima > solicitudes[i].cantidadContenedores){
-                            //Le asigno el id del viaje a la solicitud 
-                            solicitudIdViaje = solicitudes[i];
-                            solicitudIdViaje.setIdViaje(selectViaje);
-                            //Le asigno el id de la empresa que trata con esa solicitud
-                            solicitudIdEmpresa = solicitudes[i];
-                            solicitudIdEmpresa.setidEmpresa(userLogged.id)
-                            //Le resto la cantidad maxima al viaje que se eligio
-                            viaje.cantidadMaxima -= solicitudes[i].cantidadContenedores;
-                            //Cambio el estado de solicitud a CONFIRMADA
-                            solicitudes[i].estado = 'CONFIRMADA'
-                            esPermitido = 'VIAJE ASIGNADO';
-                        } 
-                    }
+                    cantidadRestante = viaje.cantidadMaxima;
+                    if( selectSolicitud === solicitudes[i].id && 
+                        selectViaje === viaje.id && 
+                        cantidadRestante >= solicitudes[i].cantidadContenedores ){
+                        //Cambio el estado de solicitud a CONFIRMADA
+                        solicitudes[i].estado = 'CONFIRMADA'
+                        //Le asigno el id del viaje a la solicitud 
+                        solicitudIdViaje = solicitudes[i];
+                        solicitudIdViaje.setIdViaje(selectViaje);
+                        //Le asigno el id de la empresa que trata con esa solicitud
+                        solicitudIdEmpresa = solicitudes[i];
+                        solicitudIdEmpresa.setidEmpresa(userLogged.id)
+                        //Le resto la cantidad maxima al viaje que se eligio
+                        cantidadRestante = viaje.cantidadMaxima - solicitudes[i].cantidadContenedores;
+                        esPermitido = 'VIAJE ASIGNADO';
+                        onBackAsignarBuque();
+                    } 
                 }     
-            });
+            }); 
         }
-        alert (esPermitido)
+    alert (esPermitido);
 }
 
 
@@ -61,7 +63,7 @@ function mostrarSelects(){
     for (let i = 0; i < empresas.length; i++){
         if(empresas[i].id === userLogged.id){
             empresas[i].viajes.forEach(function (viaje){
-                if (viaje.empresa === empresas[i].nombre){
+                if (viaje.empresa === empresas[i].nombre && viaje.fechaLlegada > fechaActual){
                     selectViaje.innerHTML +=`
                     <option value="${viaje.id}">${viaje.nombreBuque}</option>
                     `

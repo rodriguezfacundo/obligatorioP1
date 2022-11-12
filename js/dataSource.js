@@ -17,7 +17,7 @@ const solicitudes = [
     new Solicitud(1, 'CARGA_GENERAL', 'Juguetes', 'Inglaterra', 10, 1),
     new Solicitud(2, 'CARGA_PELIGROSA', 'Explosivos', 'Estados Unidos', 5, 2),
     new Solicitud(3, 'CARGA_PELIGROSA', 'Acido', 'Chile', 15, 3),
-    new Solicitud(4, 'REFRIGERADO', 'Hielo', 'Escocia', 3, 4),
+    new Solicitud(4, 'REFRIGERADO', 'Hielo', 'Escocia', 5, 4),
     new Solicitud(5, 'REFRIGERADO', 'Helado', 'China', 50, 5),
 ];
 

@@ -14,17 +14,18 @@ function mountSolicitudesPendientes(){
 function buildTablePendientes(){
     const tablaPendientes = document.querySelector('#tablaPendientes');
     tablaPendientes.innerHTML = '';
-
+    
     solicitudes.forEach(function (solicitud) {
-        if (solicitud.estado === 'PENDIENTE') {
+        if (solicitud.estado === 'PENDIENTE' && userImportadorLogged.id === solicitud.idImportador) {
             tablaPendientes.innerHTML += `
-            <tr>
-            <th scope="row">${solicitud.id}</th>
-                <td>${solicitud.estado}</td>
-                <td>${solicitud.descripcion.toUpperCase()}</td>
-            </tr>
-            `;
+                                        <tr>
+                                            <th scope="row">${solicitud.id}</th>
+                                                <td>${solicitud.estado}</td>
+                                                <td>${solicitud.descripcion.toUpperCase()}</td>
+                                        </tr>
+                                    `;
         }
+              
     });
 }
 
@@ -40,10 +41,12 @@ function onBuscar(e){
 
     solicitudes.forEach(function(solicitud){
         let nombre = solicitud.descripcion.toLowerCase();
-        if (nombre.indexOf(texto) !== -1) {
-            solicitudEncontrada.innerHTML += `
-            <li>${solicitud.descripcion} - Estado: ${solicitud.estado}</li>
-            `
+        if (userImportadorLogged.id === solicitud.id){
+            if (nombre.indexOf(texto) !== -1) {
+                solicitudEncontrada.innerHTML += `
+                <li>${solicitud.descripcion} - Estado: ${solicitud.estado}</li>
+                `
+            }
         }
     });
 
