@@ -6,6 +6,10 @@ let newID = null;
 let solicitudIdEmpresa = null;
 let solicitudIdViaje = null;
 let cantidadRestante = null;
+let solicitud = null;
+let importador = null;
+let viaje = null;
+
 
 
 //FECHA ACTUAL

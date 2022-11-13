@@ -67,11 +67,9 @@ function mountAsignarBuque() {
         //Cambio el estado de solicitud a CONFIRMADA
         solicitud.estado = 'CONFIRMADA';
         //Le asigno el id del viaje a la solicitud
-        solicitudIdViaje = solicitud;
-        solicitudIdViaje.setIdViaje(selectViaje);
+        solicitud.setIdViaje(selectViaje);
         //Le asigno el id de la empresa que trata con esa solicitud
-        solicitudIdEmpresa = solicitud;
-        solicitudIdEmpresa.setIdEmpresa(userLogged.id);
+        solicitud.setIdEmpresa(userLogged.id);
         //Le resto la cantidad maxima al viaje que se eligio
         cantidadRestante = viaje.cantidadMaxima - solicitud.cantidadContenedores;
         esPermitido = 'VIAJE ASIGNADO';

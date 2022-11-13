@@ -313,16 +313,16 @@
 
     <!-- -------------------------MANIFIESTO-------------------------- -->
     <div class ="containerTable" id="containerTablaManifiesto">
-        <div class="empresa">
+        <div class="empresa" id="containerSelectManifiesto">
             <h4>LISTADO DE SU CARGA</h4>
             <select class="estiloCampos" id="selectListadoManifiesto">
                 <option value="" selected>Seleccionar Buque</option>
             </select>
-            <input id = "btnManifiesto" class="btnQuintoEstilo" type="submit" value="Ver">
+            <input id = "btnManifiesto" class="btnSegundoEstilo" type="submit" value="Ver">
         </div>
         <br>
         <br>
-            <table>
+            <table id="containerTable">
 			    <thead>
 				    <tr>
 					    <th>Origen</th>
@@ -333,6 +333,22 @@
                     </tr>
 			    </thead>
 			    <tbody class="" id="tablaManifiesto"></tbody>
+		    </table>
+            <br>
+            <br>
+            <h4 id="titleListaPeligrosa">Lista Peligrosa</h4>
+            <br>
+            <table id="containerTablePeligrosa">
+			    <thead>
+				    <tr>
+					    <th>Origen</th>
+                        <th>Cantidad</th>
+                        <th>Importador</th>
+                        <th>Descripcion</th>
+                        <th>Tipo Mercaderia</th>
+                    </tr>
+			    </thead>
+			    <tbody class="" id="listaPeligrosa"></tbody>
 		    </table>
             <input id="btnBackManifiesto" class="btnSextoEstilo" type="submit" value="Atras">
 	    </div>

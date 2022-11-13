@@ -369,6 +369,16 @@ tr:nth-child(even){
 #containerTablaHabilitar{
   display: none;
 }
+#containerTable{
+  display: none;
+}
+#containerTablePeligrosa{
+  display: none;
+}
+
+#titleListaPeligrosa{
+  display: none;
+}
 
 #tablaCargPeligrosa{
   display: none;
