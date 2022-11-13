@@ -50,7 +50,8 @@ function onEnviarSolicitud(e){
     if(userImportadorLogged.enabled){
         if(!failedValidationSolicitud){
             newID = generateAutoIncrementID(solicitudes);
-            solicitudCreada = new Solicitud(newID, tipoMercaderia, descripcion, origen, cantidadContenedores, userImportadorLogged.id);
+            solicitudCreada = new Solicitud
+            (newID, tipoMercaderia, descripcion, origen, cantidadContenedores, userImportadorLogged.id, 'PENDIENTE');
             solicitudes.push(solicitudCreada);
             if(solicitudCreada){
                 mountMenuImportador();

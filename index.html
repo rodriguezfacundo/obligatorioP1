@@ -36,7 +36,7 @@
 <body>
     <!-- Creamos el cartel de bienvenida, y eleccion de perfil -->
     <div id="btnsPrincipal" class="buttons">
-        <h1 id="bienvenida">Bienvenido! <span class="span">Elija un perfil</span></h1>
+        <h1 id="bienvenida">Bienvenido! <span class="span">Elige un perfil</span></h1>
         <button id="btnImportador" class="fill">Importador</button>
         <button id="btnEmpresa" class="raise">Empresa</button>
     </div>
@@ -312,7 +312,16 @@
 
 
     <!-- -------------------------MANIFIESTO-------------------------- -->
-    <div class ="containerTable" id="tablaManifiesto">
+    <div class ="containerTable" id="containerTablaManifiesto">
+        <div class="empresa">
+            <h4>LISTADO DE SU CARGA</h4>
+            <select class="estiloCampos" id="selectListadoManifiesto">
+                <option value="" selected>Seleccionar Buque</option>
+            </select>
+            <input id = "btnManifiesto" class="btnQuintoEstilo" type="submit" value="Ver">
+        </div>
+        <br>
+        <br>
             <table>
 			    <thead>
 				    <tr>
@@ -323,28 +332,7 @@
                         <th>Tipo Mercaderia</th>
                     </tr>
 			    </thead>
-
-			    <tr>
-				    <td>ESP</td>
-                    <td>6</td>
-                    <td>Pepe</td>
-                    <td>Juguetes</td>
-                    <td>General</td>
-			    </tr>
-			    <tr>
-				    <td>ARG</td>
-                    <td>12</td>
-                    <td>Lorenzo</td>
-                    <td>Carne</td>
-                    <td>Refrigerada</td>
-			    </tr>
-			    <tr>
-				    <td>ING</td>
-                    <td>4</td>
-                    <td>Carl</td>
-                    <td>Acido</td>
-                    <td>Peligrosa</td>
-			    </tr>
+			    <tbody class="" id="tablaManifiesto"></tbody>
 		    </table>
             <input id="btnBackManifiesto" class="btnSextoEstilo" type="submit" value="Atras">
 	    </div>

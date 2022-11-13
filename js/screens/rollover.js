@@ -15,31 +15,29 @@ function onRollover(){
     let rolloverPermitido = 'EXCEDE LA CANTIDAD DISPONIBLE';
     let yaAsignaste = '';
 
-    if (selectSolicitudRollover != '' && selectViajeRollover != ''){
-        for (k = 0; k < solicitudes.length; k++){
-            if (solicitudes[k].idViaje != selectViajeRollover){
-                for (let b = 0; b < empresas.length; b++){
-                    empresas[b].viajes.forEach(function (viaje){
-                            cantidadRestante = viaje.cantidadMaxima;
-                            if( selectSolicitudRollover === solicitudes[k].id && 
-                                selectViajeRollover === viaje.id && 
-                                cantidadRestante >= solicitudes[k].cantidadContenedores &&
-                                selectViajeRollover != '' && selectSolicitudRollover != ''){
-                                //Le asigno el id del viaje a la solicitud 
-                                solicitudIdViaje = solicitudes[k];
-                                solicitudIdViaje.setIdViaje(selectViajeRollover);
-                                //Le resto la cantidad maxima al viaje que se eligio
-                                cantidadRestante = viaje.cantidadMaxima - solicitudes[k].cantidadContenedores;
-                                rolloverPermitido = 'CAMBIADO CON EXITO';
-                                onBackRollover();
-                            } 
-                    }); 
-                } 
-            } else{
-                yaAsignaste = 'YA ASIGNASTE ANTERIORMENTE'
-            }   
+    const viaje = getViajeByID(userLogged.viajes, selectViajeRollover);
+    const solicitud = getSolicitudByID(selectSolicitudRollover);
+    
+    if (viaje !== null && solicitud !== null){
+        if (solicitud.idViaje !== selectViajeRollover){
+            if (selectSolicitudRollover === solicitud.id &&
+                selectViajeRollover === viaje.id &&
+                viaje.cantidadMaxima >= solicitud.cantidadContenedores){
+                    //Le asigno el id del viaje a la solicitud 
+                    solicitudIdViaje = solicitud;
+                    solicitudIdViaje.setIdViaje(selectViajeRollover);
+                    //Le resto la cantidad maxima al viaje que se eligio
+                    cantidadRestante = viaje.cantidadMaxima - solicitud.cantidadContenedores;
+                    rolloverPermitido = 'CAMBIADO CON EXITO';
+                    onBackRollover();
+                }
+        } else{
+            yaAsignaste = 'YA ASIGNASTE ANTERIORMENTE'
         }
+    } else{
+        alert ('ERROR');
     }
+
     
     if(yaAsignaste === 'YA ASIGNASTE ANTERIORMENTE'){
         alert (yaAsignaste);
@@ -55,6 +53,7 @@ function onRollover(){
 function mostrarSelectsRollover(){
     const selectSolicitudRollover = document.querySelector('#selectSolicitudRollover')
     const selectViajeRollover = document.querySelector('#selectViajeRollover')
+
     
     selectSolicitudRollover.innerHTML = `
                                     <option value="" selected>Elegir Solicitud</option>

@@ -362,7 +362,7 @@ tr:nth-child(even){
   display: none;
 }
 
-#tablaManifiesto{
+#containerTablaManifiesto{
   display: none;
 }
 

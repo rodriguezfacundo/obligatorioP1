@@ -66,9 +66,14 @@ function onCrearViaje(e){
 
 
     const failedValidationViaje = formValidator(viajeFormValidations);
+    let newIdViaje = null; 
+
+    for(i = 0; i < empresas.length; i++){
+        newIdViaje = generateAutoIncrementID(empresas[i].viajes);
+    }
 
     if(!failedValidationViaje){
-        userLogged.addViaje(nombreBuque, cantMax, selectEmpresa, fechaLlegada, nro)
+        userLogged.addViaje(newIdViaje, nombreBuque, cantMax, selectEmpresa, fechaLlegada, nro)
         onMountCrearViaje();
         mountMenuEmpresa();
         containerForm.reset();
