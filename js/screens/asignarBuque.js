@@ -9,71 +9,38 @@ function mountAsignarBuque() {
     btnBack.addEventListener('click', onBackAsignarBuque);
 }
 
-/**
- * Obtiene la empresa a partir de su id
- * @param {number} id
- * @returns object|null
- */
- function getEmpresaByID(id) {
-    let empresa = null;
-    for (let i = 0; i < empresas.length; i++) {
-      if (empresas[i].id == id) {
-        empresa = empresas[i];
-      }
-    }
-    return empresa;
-  }
-  /**
-   * Obtiene un viaje a partir de su id y una lista de viajes
-   * @param {number} idViaje
-   * @returns object|null
-   */
-  function getViajeByID(viajes, idViaje) {
-    let viaje = null;
-    for (let i = 0; i < viajes.length; i++) {
-      if (viajes[i].id == idViaje) {
-        viaje = viajes[i];
-      }
-    }
-    return viaje;
-  }
-  /**
-   * Obtiene una solicitud a partir de su id
-   * @param {number} idSolicitud
-   * @returns object|null
-   */
-  function getSolicitudByID(idSolicitud) {
-    let solicitud = null;
-    for (let i = 0; i < solicitudes.length; i++) {
-      if (solicitudes[i].id == idSolicitud) {
-        solicitud = solicitudes[i];
-      }
-    }
-    return solicitud;
-  }
   
   function onAsignarBuque() {
     const selectViaje = Number(document.querySelector('#selectViaje').value);
-    const selectSolicitud = Number(
-      document.querySelector('#selectSolicitudCarga').value
-    );
+    const selectSolicitud = Number(document.querySelector('#selectSolicitudCarga').value);
     let esPermitido = 'EXCEDE LA CANTIDAD DISPONIBLE';
   
     const viaje = getViajeByID(userLogged.viajes, selectViaje);
     const solicitud = getSolicitudByID(selectSolicitud);
   
+    //Verifico que ese viaje exista y esa solicitud exista
     if (viaje !== null && solicitud !== null) {
+      //Verifico que haya disponibilidad
       if (viaje.cantidadMaxima >= solicitud.cantidadContenedores) {
-        //Cambio el estado de solicitud a CONFIRMADA
+        //Cambio el estado de esa solicitud a CONFIRMADA
         solicitud.estado = 'CONFIRMADA';
-        //Le asigno el id del viaje a la solicitud
+        //Le asigno el id del viaje a esa solicitud
         solicitud.setIdViaje(selectViaje);
         //Le asigno el id de la empresa que trata con esa solicitud
         solicitud.setIdEmpresa(userLogged.id);
+        //Le asigno la fecha de su llegada de esa solicitud
+        solicitud.setFechaLlegada(viaje.fechaLlegada);
         //Le resto la cantidad maxima al viaje que se eligio
         cantidadRestante = viaje.cantidadMaxima - solicitud.cantidadContenedores;
         esPermitido = 'VIAJE ASIGNADO';
         onBackAsignarBuque();
+        //Recorro importadores para luego comparar y sumarle 1 a la variable cantConfirmadas de ese importador
+        for (let p = 0; p < importadores.length; p++){
+          if(importadores[p].id === solicitud.idImportador &&
+            selectSolicitud === solicitud.id ){
+              importadores[p].addConfirmada(1);
+            }
+        }
       }
     } else {
       alert('Algo salió mal');
@@ -81,17 +48,15 @@ function mountAsignarBuque() {
     alert(esPermitido);
   }
   
+  //Funcion que muestra los select para posteriormente asignar viajes
   function mostrarSelects() {
     const selectViaje = document.querySelector('#selectViaje');
     const selectSolicitud = document.querySelector('#selectSolicitudCarga');
   
-    selectSolicitud.innerHTML = `
-                                      <option value="" selected>Elegir Solicitud</option>
-                                  `;
-    selectViaje.innerHTML = `
-                                  <option value="" selected>Elegir Buque</option>
-                              `;
+    selectSolicitud.innerHTML = `<option value="" selected>Elegir Solicitud</option>`;
+    selectViaje.innerHTML = `<option value="" selected>Elegir Buque</option>`;
   
+    //Si la solicitud en la que me encuentro su estado es pendiente, me la agrega en el options
     solicitudes.forEach(function (solicitud) {
       if (solicitud.estado === 'PENDIENTE') {
         selectSolicitud.innerHTML += `
@@ -100,11 +65,15 @@ function mountAsignarBuque() {
       }
     });
   
+    /*
+    Si el nombre de la empresa loggeada es igual al nombre de la empresa del viaje en el que me encuentro, y
+    la fecha de llegada de ese viaje es mayor a la fecha actual me agrega ese viaje en el options.
+    */
     for (let i = 0; i < empresas.length; i++) {
       if (empresas[i].id === userLogged.id) {
-        empresas[i].viajes.forEach(function (viaje) {
+        userLogged.viajes.forEach(function (viaje) {
           if (
-            viaje.empresa === empresas[i].nombre &&
+            viaje.empresa === userLogged.nombre &&
             viaje.fechaLlegada > fechaActual
           ) {
             selectViaje.innerHTML += `

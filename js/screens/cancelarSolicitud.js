@@ -6,13 +6,16 @@ function mountCancelarSolicitud(){
     btnVolver.addEventListener('click', onVolverCancelar)
 }
 
-
+//Funcion que me construye la tabla
 function buildTable() {
     const cancelarTable = document.querySelector('#tablaCancelar');
     cancelarTable.innerHTML = '';
 
+    /*Si esa solicitud esta pendiente y si el id del importador loggeado es igual al id de importador de esa
+    solicitud, me crea la tabla*/
     solicitudes.forEach(function (solicitud) {
-        if (solicitud.estado === 'PENDIENTE') {
+        if (solicitud.estado === 'PENDIENTE' &&
+            userImportadorLogged.id === solicitud.idImportador) {
             cancelarTable.innerHTML += `
             <tr>
             <th scope="row">${solicitud.id}</th>
@@ -25,6 +28,7 @@ function buildTable() {
         }
     });
 
+    //Recorro esos botones y a cada uno le agrego el evento click
     const btns = document.querySelectorAll('.btnCancelar');
     btns.forEach(function (btn){
         btn.addEventListener('click', onCancelarClick)
@@ -33,15 +37,28 @@ function buildTable() {
 
 let cantidadVeces = 0;
 function onCancelarClick(){
+    //Si cancelo mas de tres veces queda el importador deshabilitado
     cantidadVeces++
     if(cantidadVeces >= 3){
         userImportadorLogged.enabled = false;
     }
+    
+    //Mediante el atributo 'this.getAttribute', solamente para esa funcion que se canceló, va a pasar a cancelada
     const id = Number(this.getAttribute('data-id'));
     onChangeState(id);
+    for (let i = 0; i < importadores.length; i++){
+        if(importadores[i] === userImportadorLogged){
+            importadores[i].addCancelada(1);
+            importadores[i].cantPendientes -= 1;
+        }
+    }
     buildTable();
 }
 
+/**
+ * Funcion que recibe un id de parametro y me cambia esa solicitud a cancelada
+ * @param {number} id 
+ */
 function onChangeState(id){
     solicitudes.forEach(function (solicitud){
         if (solicitud.id === id){
@@ -50,12 +67,6 @@ function onChangeState(id){
     });
 
 
-}
-
-function cambiarEstadoImportador(){
-    solicitudes.forEach(function (solicitud){
-        console.log(solicitud.idImportador)
-    })
 }
 
 

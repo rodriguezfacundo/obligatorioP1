@@ -1,3 +1,4 @@
+//FUNCION QUE DISPARA A DISTINTAS PARTES DEL PROGRAMA POR PARTE DE LA EMPRESA
 function mountMenuEmpresa() {
     changeVisibility('#menuEmpresa','block');
     welcomeMsg(userLogged.nombre);

@@ -16,6 +16,8 @@ function buildTablePendientes(){
     tablaPendientes.innerHTML = '';
     
     solicitudes.forEach(function (solicitud) {
+        //Si el estado de esa solicitud es pendiente, y el id del importador loggeado coincide con el
+        //del importador que estoy recorriendo, me crea la tabla
         if (solicitud.estado === 'PENDIENTE' && userImportadorLogged.id === solicitud.idImportador) {
             tablaPendientes.innerHTML += `
                                         <tr>
@@ -37,11 +39,15 @@ function onBuscar(e){
     const solicitudEncontrada = document.querySelector('#pSolicitudEncontrada');
 
     solicitudEncontrada.innerHTML = '';
+    //Paso a minusculas el texto ingresado para luego comparar y que no hayan diferencias
     const texto = textoIngresado.value.toLowerCase();
 
     solicitudes.forEach(function(solicitud){
+        //Paso a minusculas la descripcion de la solicitud
         let nombre = solicitud.descripcion.toLowerCase();
+        //Si el id del importador loggeado es el mismo que el id del importador de esa solicitud, me lo pinta
         if (userImportadorLogged.id === solicitud.idImportador){
+            //Si parte del texto ingresado coinicide con la descripcion de esa solicitud creada, me la muestra
             if (nombre.indexOf(texto) !== -1) {
                 solicitudEncontrada.innerHTML += `
                 <li>${solicitud.descripcion} - Estado: ${solicitud.estado}</li>
@@ -50,6 +56,7 @@ function onBuscar(e){
         }
     });
 
+    //Si no coincide me dice que no se encuentra
     if (solicitudEncontrada.innerHTML === ''){
         solicitudEncontrada.innerHTML = 'Solicitud no encontrada :(';
     }

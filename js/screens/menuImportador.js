@@ -1,3 +1,5 @@
+//FUNCION QUE DISPARA A DISTINTAS PARTES DEL PROGRAMA POR PARTE DEL IMPORTADOR
+
 function mountMenuImportador() {
     changeVisibility('#menuImportador','block');
     welcomeMsg(userImportadorLogged.nombre);

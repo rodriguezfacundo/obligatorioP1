@@ -1,3 +1,4 @@
+//Creamos la clase Empresa
 class Empresa {
     constructor(id, nombre, nombreUsuario, pass){
         this.id = id;
@@ -7,6 +8,7 @@ class Empresa {
         this.viajes = [];
     }
     
+    //Metodo que me crea un nuevo viaje
     addViaje(idViaje, nombreBuque, cantMax, empresa, fechaLlegada, nro) {
         const viaje = new Viaje(idViaje, nombreBuque, cantMax, empresa, fechaLlegada, nro);
         this.viajes.push(viaje);

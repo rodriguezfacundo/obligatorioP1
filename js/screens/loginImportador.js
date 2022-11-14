@@ -14,8 +14,11 @@ function onLoggedImportador(e){
     const passImportador = document.querySelector('#inputPass').value;
     const failedValidationLoginImportador = formValidator(loginFormValidations);
 
+    //Verifico que se hayan completado todos los campos, sino se alertara
     if(!failedValidationLoginImportador){
+        //El importador loggeado sera si se encuentra un importador registrado con esos mismos datos
         userImportadorLogged = findUserLoggedImportador(usernameImportador, passImportador)
+        //Valido que se haya verificado
         if(userImportadorLogged){
             mountMenuImportador();
             onMountLogin()

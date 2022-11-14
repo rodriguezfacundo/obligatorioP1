@@ -48,22 +48,14 @@
         <input class="controls" type="text" name="nombres" id="registName" placeholder="Ingrese su Nombre y Apellido">
         <input class="controls" type="text" name="apellidos" id="usernameRegist" placeholder="Ingrese su Usuario">
         <h6 class="parrafoImagen">Por Favor Elija Una Imagen</h6>
-        <label class="container">
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen1" id="imagen1">
             <img class="imgEmpresas" src="./img/empresa2.png" alt="">
-        </label>
-        <label class="container">
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen2" id="imagen2">
             <img class="imgEmpresas" src="./img/empresa3.png" alt="">
-        </label>
-        <label class="container">
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen3" id="imagen3">
             <img class="imgEmpresas" src="./img/empresa4.png" alt="">
-        </label>
-        <label class="container">
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen4" id="imagen4">
             <img class="imgEmpresas" src="./img/empresa6.jpg" alt="">
-        </label>
         <input class="controls" type="password" name="correo" id="registPass" placeholder="Ingrese su Contraseña">
         <p id="pErrorRegist"></p>
         <input class="btnPrimerEstilo" id = "btnRegistrar" type="submit" value="Registrar">
@@ -175,19 +167,15 @@
     <!-- ESTADISTICAS -->
     <div class="importador" id="dashboardEstadisticas">
         <h4>Informacion Estadistica</h4>
-        <p>Porcentaje de cancelaciones contra el total de cargas: 34%</p>
+        <p id="pPorcentajeCanceladas"></p>
         <br>
         <br>
         <h4>Proximas llegadas de su solicitud</h4>
-        <p>1. AAAA/MM/DD</p>
-        <p>2. AAAA/MM/DD</p>
-        <p>3. AAAA/MM/DD</p>
+        <li id="pFechaLlegada"></li>
         <br>
         <br>
         <h4>Porcentajes de Empresas Solicitadas</h4>
-        <p>Empresa 1: 20%</p>
-        <p>Empresa 2: 50%</p>
-        <p>Empresa 3: 30%</p>
+        <p id="pEmpresaPtje"></p>
         <input id="btnVolverEstadisticas" class="btnSextoEstilo" type="submit" value="Atras">
     </div>
 

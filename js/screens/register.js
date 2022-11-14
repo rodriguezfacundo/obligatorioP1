@@ -1,3 +1,4 @@
+//ARRAY DE VALIDACIONES
 const registerFormValidations = [
     {
         id: '#registName',
@@ -34,6 +35,7 @@ function onMostrarRegistro(){
     btnTengoCuenta.addEventListener('click', onTengoCuenta)
 }
 
+//Si se elige el boton de tengo cuenta, me dirige al loggin del importador
 function onTengoCuenta(e){
     e.preventDefault();
 
@@ -41,6 +43,7 @@ function onTengoCuenta(e){
     mountLoginImportador();
 }
 
+//Funcion que me registra a un nuevo importador
 function onRegistrar(e){
     e.preventDefault();
     const containerForm = document.querySelector('#formRegistro');
@@ -52,10 +55,14 @@ function onRegistrar(e){
 
     const failedValidationRegist = formValidator(registerFormValidations);
 
-    if (!failedValidationRegist){
+    //Verifico que se hayan completado todos los campos, sino se alertara
+    if (!failedValidationRegist && fnValidatePicture){
+        //Genero un nuevo id para ese importador registrado
         newID = generateAutoIncrementID(importadores);
+        //Creo un nuevo importador
         userRegistered = new Importador(newID, registName, registUsername, true, registPass);
         importadores.push(userRegistered);
+        //Verifico que si ya se registró, me cambia de pantalla.
         if (userRegistered){
             onMountRegister();
             mountLoginImportador();

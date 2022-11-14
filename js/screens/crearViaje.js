@@ -1,3 +1,4 @@
+//ARRAY DE VERIFICACIONES
 const viajeFormValidations = [
     {
         id: '#inputNombreBuque',
@@ -46,13 +47,7 @@ function mountCrearViaje(){
     btnBack.addEventListener('click', onBackCrearViaje);
 }
 
-function onBackCrearViaje(e){
-    e.preventDefault();
-
-    onMountCrearViaje();
-    mountMenuEmpresa();
-}
-
+//Al esuchar el evento click, se ejecutaran los siguientes pasos para la creacion de un viaje
 function onCrearViaje(e){
     e.preventDefault();
     const containerForm = document.querySelector('#formCrearViaje');
@@ -68,11 +63,14 @@ function onCrearViaje(e){
     const failedValidationViaje = formValidator(viajeFormValidations);
     let newIdViaje = null; 
 
+    //Recorro todos los viajes para generar un nuevo id distintos a los ya creados
     for(i = 0; i < empresas.length; i++){
         newIdViaje = generateAutoIncrementID(empresas[i].viajes);
     }
 
+    //Verifico que se hayan completado todos los campos, sino se alertara 
     if(!failedValidationViaje){
+        //Creo un nuevo viaje donde se almacenará en el array de viajes del usuario loggeado
         userLogged.addViaje(newIdViaje, nombreBuque, cantMax, selectEmpresa, fechaLlegada, nro)
         onMountCrearViaje();
         mountMenuEmpresa();
@@ -81,6 +79,13 @@ function onCrearViaje(e){
         pErrorViaje.innerHTML = failedValidationViaje.errMsg;
     }
 
+}
+
+function onBackCrearViaje(e){
+    e.preventDefault();
+
+    onMountCrearViaje();
+    mountMenuEmpresa();
 }
 
 function onMountCrearViaje(){

@@ -1,3 +1,4 @@
+//ARRAY DE VERIFICACIONES
 const loginFormValidations = [
     {
         id: '#inputUser',
@@ -19,6 +20,7 @@ function onMostrarLogin(){
     btnLogin.addEventListener('click', onLoggedEmpresa);
 }
 
+//Evento click para loggearme
 function onLoggedEmpresa(e){
     e.preventDefault();
     const containerForm = document.querySelector('#formLogin');
@@ -28,8 +30,11 @@ function onLoggedEmpresa(e){
 
     const failedValidationLoginEmpresa = formValidator(loginFormValidations);
 
+    //Verifico que se hayan completado todos los campos, sino se alertara
     if (!failedValidationLoginEmpresa) {
+        //El usuario loggeado sera buscado en las precargas de empresas
         userLogged = findUserLoggedEmpresa(inputUsername, inputPass);
+        //Verifico que esa empresa exista
         if (userLogged) {
         onMountLogin();
         mountMenuEmpresa();

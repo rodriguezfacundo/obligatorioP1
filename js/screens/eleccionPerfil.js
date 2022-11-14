@@ -1,3 +1,4 @@
+//Funcion que será la declarada en el index.js, para poder dar comienzo a la aplición
 function elegirPerfil(){
     changeVisibility('#btnsPrincipal', 'block');
 

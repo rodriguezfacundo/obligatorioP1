@@ -1,3 +1,4 @@
+//ARRAY DE VALIDACIONES
 const solicitudFormValidations = [
     {
         id: '#tipoMercaderia',
@@ -36,6 +37,7 @@ function mountCrearSolicitudCarga(){
     btnVolverSolicitud.addEventListener('click', onVolverSolicitud)
 }
 
+//Al escuchar el evento click, se ejecutaran las siguientes acciones
 function onEnviarSolicitud(e){
     e.preventDefault();
     const containerForm = document.querySelector('#formSolicitudCarga');
@@ -47,13 +49,22 @@ function onEnviarSolicitud(e){
     const msgErrorSolcitudCarga = document.querySelector('#errMsgSolcitudCarga');
 
     const failedValidationSolicitud = formValidator(solicitudFormValidations);
+    
+    //Primero verifico que ese importador se encuentre habilitado
     if(userImportadorLogged.enabled){
+        //Luego verifico que se hayan completado todos los campos solicitados, de lo contrario se alertara
         if(!failedValidationSolicitud){
+            //Genero un nuevo id para la solicitud creada
             newID = generateAutoIncrementID(solicitudes);
+            //Creo una nueva solicitud
             solicitudCreada = new Solicitud
             (newID, tipoMercaderia, descripcion, origen, cantidadContenedores, userImportadorLogged.id, 'PENDIENTE');
             solicitudes.push(solicitudCreada);
+            /*Si se creo la solicitud, le agrego 1 a cantPendientes de ese importador, y le sumo 1 a cantidad
+            de solicitudes a ese importador*/
             if(solicitudCreada){
+                userImportadorLogged.addPendiente(1);
+                userImportadorLogged.addCantSolicitud(1);
                 mountMenuImportador();
                 onMountFormSolicitud();
                 containerForm.reset();

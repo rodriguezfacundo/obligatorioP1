@@ -128,16 +128,6 @@ function formValidator(validations) {
     return failedValidation;
 }
 
-function validatePicture(){
-    const formularioRegistro = document.querySelector('#formRegistro');
-    isValidPicture = false;
-    for (i = 0; i < formularioRegistro.imagenes; i++){
-        if (formularioRegistro.imagenes[i].checked){
-            isValidPicture = true;
-        }
-    }
-    return isValidPicture;
-}
 
 
 

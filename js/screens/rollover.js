@@ -9,6 +9,7 @@ function mountRollover(){
     btnBackRollover.addEventListener('click', onBackRollover);
 }
 
+//Funcion que me cambia del viaje de esa solicitud a otro viaje
 function onRollover(){
     const selectSolicitudRollover = Number(document.querySelector('#selectSolicitudRollover').value);
     const selectViajeRollover = Number(document.querySelector('#selectViajeRollover').value);
@@ -18,14 +19,18 @@ function onRollover(){
     const viaje = getViajeByID(userLogged.viajes, selectViajeRollover);
     const solicitud = getSolicitudByID(selectSolicitudRollover);
     
+    //Verifico que esa solicitud y ese viaje existan
     if (viaje !== null && solicitud !== null){
+        //Verifico que el viaje de esa solicitud no sea el viaje nuevo que va a seleccionar
         if (solicitud.idViaje !== selectViajeRollover){
+            /*Verifico que haya cantidad disponible, que el viaje que selecciono sea igual al id del viaje
+            y que la solicitud que selecciono sea igual al id de la solicitud.
+            */
             if (selectSolicitudRollover === solicitud.id &&
                 selectViajeRollover === viaje.id &&
                 viaje.cantidadMaxima >= solicitud.cantidadContenedores){
                     //Le asigno el id del viaje a la solicitud 
-                    solicitudIdViaje = solicitud;
-                    solicitudIdViaje.setIdViaje(selectViajeRollover);
+                    solicitud.setIdViaje(selectViajeRollover);
                     //Le resto la cantidad maxima al viaje que se eligio
                     cantidadRestante = viaje.cantidadMaxima - solicitud.cantidadContenedores;
                     rolloverPermitido = 'CAMBIADO CON EXITO';
@@ -38,7 +43,7 @@ function onRollover(){
         alert ('ERROR');
     }
 
-    
+    //Condicionales que depende el estado en el que se encuentren, mostrara en pantalla su contenido
     if(yaAsignaste === 'YA ASIGNASTE ANTERIORMENTE'){
         alert (yaAsignaste);
     } else if (rolloverPermitido === 'CAMBIADO CON EXITO'){
@@ -50,6 +55,7 @@ function onRollover(){
 }
 
 
+//Funcion que construye los select a mostrar
 function mostrarSelectsRollover(){
     const selectSolicitudRollover = document.querySelector('#selectSolicitudRollover')
     const selectViajeRollover = document.querySelector('#selectViajeRollover')
@@ -63,6 +69,7 @@ function mostrarSelectsRollover(){
                             `
 
     solicitudes.forEach(function (solicitud){
+        //Si esa solicitud ya se encuentra confirmada, me la muestra
         if (solicitud.estado === 'CONFIRMADA'){
             selectSolicitudRollover.innerHTML +=`
             <option value="${solicitud.id}">${solicitud.descripcion}</option>
@@ -70,9 +77,15 @@ function mostrarSelectsRollover(){
         }
     });
     
+    /* 
+    Si el id de esa empresa es el mismo que el de la empresa loggeada , recorro los viajes
+    */
     for (let i = 0; i < empresas.length; i++){
         if(empresas[i].id === userLogged.id){
             empresas[i].viajes.forEach(function (viaje){
+                /*Si el nombre de la empresa de ese viaje es el mismo al de la empresa 
+                y su llegda es mayor a la fecha actual, me agrega el option
+                */
                 if (viaje.empresa === empresas[i].nombre && viaje.fechaLlegada > fechaActual){
                     selectViajeRollover.innerHTML +=`
                     <option value="${viaje.id}">${viaje.nombreBuque}</option>

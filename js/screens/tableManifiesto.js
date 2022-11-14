@@ -9,6 +9,7 @@ function mountManifiesto(){
     btnBack.addEventListener('click', onBackManifiesto);
 }
 
+//ACCIONES QUE SE HARAN EN EL MOMENTO DE HACER CLICK AL BOTON DEL MANIFIESTO
 function onManifiesto(){
     changeVisibility('#containerTable', 'block')
     const selectBuque = document.querySelector('#selectListadoManifiesto').value;
@@ -21,6 +22,7 @@ function onManifiesto(){
     let importador = null;
     let viaje = null;
 
+    //Verifico que se haya elegido un viaje sino se alertara
     if (selectBuque !== ''){
         for (let i = 0; i < viajes.length; i++){
             viaje = viajes[i];
@@ -28,6 +30,9 @@ function onManifiesto(){
                 solicitud = solicitudes[b];
                 for (let c = 0; c < importadores.length; c++){
                     importador = importadores[c];
+                    /*Si el nombre del buque es igual al nombre del buque de ese viaje, su estado es 
+                    confirmada, el id del importador de esa solicitud es el mismo que el id de ese importador
+                    y el id del viaje es el mismo que el id del viaje de esa solicitud, me lo muestra */
                     if (selectBuque === viaje.nombreBuque && 
                         solicitud.estado === 'CONFIRMADA' &&
                         solicitud.idImportador === importador.id &&
@@ -42,6 +47,7 @@ function onManifiesto(){
                                 <td>${solicitud.tipoMercaderia}</td>
                             </tr>
                             `
+                            //Si su carga es peligrosa, me lo pinta en color rojo para alertar
                             if(solicitud.tipoMercaderia === 'CARGA_PELIGROSA'){
                                 changeVisibility('#containerTablePeligrosa', 'block')
                                 changeVisibility('#titleListaPeligrosa', 'block')
@@ -65,16 +71,18 @@ function onManifiesto(){
   
 }
 
-
+//Funcion que me construye el select para despues mostrar la tabla
 function buildSelectManifiesto(){
     const selectBuque = document.querySelector('#selectListadoManifiesto');
     selectBuque.innerHTML = `<option value="" selected>Seleccionar Buque</option>`
     const viajes = userLogged.viajes;
     let viaje = null;
 
+    //Verifico que la empresa loggeada tenga viajes
     if (viajes !== null){
         for (let i = 0; i < viajes.length; i++){
             viaje = viajes[i];
+            //Si el nombre de la empresa loggeada es igual al nombre de la empresa de ese viaje, me lo pinta
             if (userLogged.nombre === viaje.empresa){
                 selectBuque.innerHTML += `<option value = "${viaje.nombreBuque}">${viaje.nombreBuque}</option>`
             }

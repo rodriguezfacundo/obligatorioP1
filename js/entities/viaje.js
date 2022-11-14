@@ -1,3 +1,4 @@
+//Declaramos la clase viaje
 class Viaje {
     constructor(id, nombreBuque, cantidadMaxima, empresa, fechaLlegada, nro){
         this.id = id;
