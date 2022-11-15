@@ -56,7 +56,9 @@ function onRegistrar(e){
     const failedValidationRegist = formValidator(registerFormValidations);
 
     //Verifico que se hayan completado todos los campos, sino se alertara
-    if (!failedValidationRegist && fnValidatePicture){
+    if(!document.querySelector('input[name="imagenes"]:checked')){
+        msgErrorRegistro.innerHTML = 'Debes seleccionar una imagen'
+    } else if (!failedValidationRegist && document.querySelector('input[name ="imagenes"]:checked')){
         //Genero un nuevo id para ese importador registrado
         newID = generateAutoIncrementID(importadores);
         //Creo un nuevo importador

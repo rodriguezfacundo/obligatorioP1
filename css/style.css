@@ -79,7 +79,7 @@
   .parrafoImagen{
     font-size: 15px;
     margin-bottom: 20px;
-    color: #1f53c5;
+    color: grey;
   }
 
   .importador{
@@ -398,5 +398,10 @@ tr:nth-child(even){
 
 #formRechazarSolicitud{
   display: none;
+}
+
+.errMsg{
+  color: red;
+  font-weight: bold;
 }
 

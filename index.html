@@ -44,10 +44,8 @@
     <!-- ----------------------------------------IMPORTADOR------------------------------------------------------ -->
     <!-- Formulario de registro -->
     <form class="form-register" id="formRegistro">
-        <h4>Registrarse</h4>
-        <input class="controls" type="text" name="nombres" id="registName" placeholder="Ingrese su Nombre y Apellido">
-        <input class="controls" type="text" name="apellidos" id="usernameRegist" placeholder="Ingrese su Usuario">
-        <h6 class="parrafoImagen">Por Favor Elija Una Imagen</h6>
+        <h4>REGISTRO</h4>
+        <h6 class="parrafoImagen">Seleccione una imagen</h6>
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen1" id="imagen1">
             <img class="imgEmpresas" src="./img/empresa2.png" alt="">
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen2" id="imagen2">
@@ -56,8 +54,12 @@
             <img class="imgEmpresas" src="./img/empresa4.png" alt="">
             <input class="imagenSeleccionada" type="radio" name="imagenes" value="imagen4" id="imagen4">
             <img class="imgEmpresas" src="./img/empresa6.jpg" alt="">
+            <br>
+            <br>
+        <input class="controls" type="text" name="nombres" id="registName" placeholder="Ingrese su Nombre y Apellido">
+        <input class="controls" type="text" name="apellidos" id="usernameRegist" placeholder="Ingrese su Usuario">
         <input class="controls" type="password" name="correo" id="registPass" placeholder="Ingrese su Contraseña">
-        <p id="pErrorRegist"></p>
+        <p class="errMsg" id="pErrorRegist"></p>
         <input class="btnPrimerEstilo" id = "btnRegistrar" type="submit" value="Registrar">
         <input class="btnTercerEstilo" id = "btnTengoCuenta" type="submit" value="Ya tengo cuenta">
     </form>
@@ -67,7 +69,7 @@
         <h4>Inicio de Sesion</h4>
         <input class="controls" type="text" name="nombres" id="inputUser" placeholder="Ingrese su Usuario">
         <input class="controls" type="password" name="correo" id="inputPass" placeholder="Ingrese su Contraseña">
-        <p class="pError" id="pError"></p>
+        <p  class="errMsg" id="pError"></p>
         <input class="btnPrimerEstilo" id="btnLogin" type="submit" value="Iniciar Sesion">
     </form>
 
@@ -120,7 +122,7 @@
         <input class="estiloCampos" id="cantidadContenedores" type="number" placeholder="Ej: 4">
         <input class="btnSegundoEstilo"  id = "btnSolicitarCarga"  type="submit" value="Solicitar Carga">
         <input id="btnVolverSolicitud" class="btnSextoEstilo" type="submit" value="Atras">
-        <p id="errMsgSolcitudCarga"></p>
+        <p id="errMsgSolcitudCarga"  class="errMsg"></p>
     </form>
 
     <!-- Solicitudes Pendientes, y buscador de solicitudes-->
@@ -141,9 +143,7 @@
         <br>
         <h4>Buscar una Solicitud</h4>
         <input class="estiloCampos" type="text" id="inputBuscarSolicitud" placeholder="Breve descripcion">
-        <ul id="pSolicitudEncontrada">
-            <li></li>
-        </ul>
+        <ul id="pSolicitudEncontrada"></ul>
         <input id="btnBuscar" class = "btnCuartoEstilo" type="submit" value="Buscar">
         <input id="btnVolverPendientes" class="btnSextoEstilo" type="submit" value="Volver">
     </form> 
@@ -166,15 +166,15 @@
 
     <!-- ESTADISTICAS -->
     <div class="importador" id="dashboardEstadisticas">
-        <h4>Informacion Estadistica</h4>
+        <h4>Porcentaje de cancelaciones contra el total de cargas</h4>
         <p id="pPorcentajeCanceladas"></p>
         <br>
         <br>
-        <h4>Proximas llegadas de su solicitud</h4>
-        <li id="pFechaLlegada"></li>
+        <h4>Proximas llegadas de sus solicitudes</h4>
+        <ol id="pFechaLlegada"></ol>
         <br>
         <br>
-        <h4>Porcentajes de Empresas Solicitadas</h4>
+        <h4>Participación de las diferentes líneas de carga en sus solicitudes</h4>
         <p id="pEmpresaPtje"></p>
         <input id="btnVolverEstadisticas" class="btnSextoEstilo" type="submit" value="Atras">
     </div>
@@ -242,7 +242,7 @@
         <input class="estiloCampos" type="number" id="inputNumeroReferencia" placeholder="Ej: 1">
         <input id="btnCrearNuevoViaje" class="btnQuintoEstilo" type="submit" value="Crear Viaje">
         <input id="btnBackCrearViaje" class="btnSextoEstilo" type="submit" value="Atras">
-        <p id="pErrorViaje"></p>
+        <p  class="errMsg" id="pErrorViaje"></p>
     </form>
 
     
@@ -260,7 +260,7 @@
         <select class="estiloCampos" id="selectViaje">
             <option value="" selected>Seleccionar Buque</option>
         </select>
-        <p id="pHecho"></p>
+        <p class="errMsg" id="pErrAsignar"></p>
         <input id = "btnAsignarViaje" class="btnQuintoEstilo" type="submit" value="Asignar Viaje">
         <input id="btnBackAsignarBuque" class="btnSextoEstilo" type="submit" value="Atras">
     </div>
@@ -275,6 +275,7 @@
         <select class="estiloCampos" id="selectViajeRollover">
             <option value="" selected>Asignar Nuevo Buque</option>
         </select>
+        <p class="errMsg" id="errorRollover"></p>
         <input id = "btnClickRollover" class="btnCuartoEstilo" type="submit" value="Crear Rollover">
         <input id="btnBackRollover" class="btnSextoEstilo" type="submit" value="Atras">
     </div>
@@ -292,7 +293,7 @@
                     <th>Cambiar Estado</th>
                 </tr>
             </thead>
-        <tbody class="" id="tablaRechazar"></tbody>
+        <tbody id="tablaRechazar"></tbody>
         </table>
         <input id="btnVolverRechazar" class="btnSextoEstilo" type="submit" value="Volver">
     </div> 
@@ -300,7 +301,7 @@
 
 
     <!-- -------------------------MANIFIESTO-------------------------- -->
-    <div class ="containerTable" id="containerTablaManifiesto">
+    <div class ="main-container" id="containerTablaManifiesto">
         <div class="empresa" id="containerSelectManifiesto">
             <h4>LISTADO DE SU CARGA</h4>
             <select class="estiloCampos" id="selectListadoManifiesto">
@@ -310,34 +311,36 @@
         </div>
         <br>
         <br>
-            <table id="containerTable">
-			    <thead>
-				    <tr>
-					    <th>Origen</th>
-                        <th>Cantidad</th>
-                        <th>Importador</th>
-                        <th>Descripcion</th>
-                        <th>Tipo Mercaderia</th>
-                    </tr>
-			    </thead>
-			    <tbody class="" id="tablaManifiesto"></tbody>
-		    </table>
-            <br>
-            <br>
-            <h4 id="titleListaPeligrosa">Lista Peligrosa</h4>
-            <br>
-            <table id="containerTablePeligrosa">
-			    <thead>
-				    <tr>
-					    <th>Origen</th>
-                        <th>Cantidad</th>
-                        <th>Importador</th>
-                        <th>Descripcion</th>
-                        <th>Tipo Mercaderia</th>
-                    </tr>
-			    </thead>
-			    <tbody class="" id="listaPeligrosa"></tbody>
-		    </table>
+        <h4 id="titleListaPeligrosa">Lista Peligrosa</h4>
+        <br>
+        <table id="containerTable">
+			<thead>
+				<tr>
+					<th>Origen</th>
+                    <th>Cantidad</th>
+                    <th>Importador</th>
+                    <th>Descripcion</th>
+                    <th>Tipo Mercaderia</th>
+                </tr>
+			</thead>
+			<tbody id="tablaManifiesto"></tbody>
+		</table>
+        <br>
+        <br>
+        <h4 id="titleListaPeligrosa">Lista Peligrosa</h4>
+        <br>
+        <table id="containerTablePeligrosa">
+			<thead>
+				<tr>
+					<th>Origen</th>
+                    <th>Cantidad</th>
+                    <th>Importador</th>
+                    <th>Descripcion</th>
+                    <th>Tipo Mercaderia</th>
+                </tr>
+			</thead>
+			<tbody class="" id="listaPeligrosa"></tbody>
+		</table>
             <input id="btnBackManifiesto" class="btnSextoEstilo" type="submit" value="Atras">
 	    </div>
         
@@ -356,36 +359,10 @@
                         <th>Cambiar Estado</th>
                     </tr>
                 </thead>
-            <tbody class="" id="tablaHabilitar"></tbody>
+            <tbody id="tablaHabilitar"></tbody>
             </table>
             <input id="btnVolverHabilitar" class="btnSextoEstilo" type="submit" value="Volver">
     </div>
     
-
-
-
-        <!-- -------------------- CARGA PELIGROSA------------------------------- -->
-    <div class="empresa" id="tablaCargPeligrosa">
-        <h4>Informe de Carga Peligrosa</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th>Importador</th>
-                    <th>Mercaderia</th>
-                </tr>
-            </thead>
-            <tr>
-				<td>Pepe</td>
-                <td>Acido</td>
-			</tr>
-            <tr>
-				<td>Ignacio</td>
-                <td>Explosivos</td>
-			</tr>
-        </table>
-        <input class="btnVerPendientes" type="button" value="Enviar a Autoridades">
-        <input id="btnBackPeligrosa" class="btnSextoEstilo" type="submit" value="Atras">
-    </div>
-
 </body>
 </html>

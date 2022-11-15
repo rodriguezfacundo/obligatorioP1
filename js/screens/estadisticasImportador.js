@@ -33,6 +33,7 @@ function buildPtjeCancelaciones(selector){
 
 //Funcion que me ordena las fechas de llegadas de las solicitudes confirmadas de ese importador
 function fechasLlegadas(selector){
+    selector.innerHTML = '';
     for(let i = 0; i < solicitudes.length; i++){
         if(solicitudes[i].idImportador === userImportadorLogged.id &&
             solicitudes[i].estado === 'CONFIRMADA'){

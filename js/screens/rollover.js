@@ -11,6 +11,7 @@ function mountRollover(){
 
 //Funcion que me cambia del viaje de esa solicitud a otro viaje
 function onRollover(){
+    const errorRollover = document.querySelector('#errorRollover');
     const selectSolicitudRollover = Number(document.querySelector('#selectSolicitudRollover').value);
     const selectViajeRollover = Number(document.querySelector('#selectViajeRollover').value);
     let rolloverPermitido = 'EXCEDE LA CANTIDAD DISPONIBLE';
@@ -28,11 +29,11 @@ function onRollover(){
             */
             if (selectSolicitudRollover === solicitud.id &&
                 selectViajeRollover === viaje.id &&
-                viaje.cantidadMaxima >= solicitud.cantidadContenedores){
+                viaje.cantidadRestante >= solicitud.cantidadContenedores){
                     //Le asigno el id del viaje a la solicitud 
                     solicitud.setIdViaje(selectViajeRollover);
-                    //Le resto la cantidad maxima al viaje que se eligio
-                    cantidadRestante = viaje.cantidadMaxima - solicitud.cantidadContenedores;
+                    //Le resto la cantidad restante al viaje que se eligio
+                    viaje.cantidadRestante -= solicitud.cantidadContenedores;
                     rolloverPermitido = 'CAMBIADO CON EXITO';
                     onBackRollover();
                 }
@@ -45,11 +46,11 @@ function onRollover(){
 
     //Condicionales que depende el estado en el que se encuentren, mostrara en pantalla su contenido
     if(yaAsignaste === 'YA ASIGNASTE ANTERIORMENTE'){
-        alert (yaAsignaste);
+        errorRollover.innerHTML = yaAsignaste;
     } else if (rolloverPermitido === 'CAMBIADO CON EXITO'){
-        alert (rolloverPermitido);
+        errorRollover.innerHTML = rolloverPermitido;
     } else if (rolloverPermitido === 'EXCEDE LA CANTIDAD DISPONIBLE'){
-        alert (rolloverPermitido);
+        errorRollover.innerHTML = rolloverPermitido;
     }
 
 }

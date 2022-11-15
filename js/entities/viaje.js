@@ -7,5 +7,6 @@ class Viaje {
         this.empresa = empresa;
         this.fechaLlegada = fechaLlegada;
         this.nro = nro;
+        this.cantidadRestante = cantidadMaxima;
     }
 }

@@ -11,6 +11,7 @@ function mountAsignarBuque() {
 
   
   function onAsignarBuque() {
+    const pErrAsignar = document.querySelector('#pErrAsignar');
     const selectViaje = Number(document.querySelector('#selectViaje').value);
     const selectSolicitud = Number(document.querySelector('#selectSolicitudCarga').value);
     let esPermitido = 'EXCEDE LA CANTIDAD DISPONIBLE';
@@ -21,7 +22,7 @@ function mountAsignarBuque() {
     //Verifico que ese viaje exista y esa solicitud exista
     if (viaje !== null && solicitud !== null) {
       //Verifico que haya disponibilidad
-      if (viaje.cantidadMaxima >= solicitud.cantidadContenedores) {
+      if (viaje.cantidadRestante >= solicitud.cantidadContenedores) {
         //Cambio el estado de esa solicitud a CONFIRMADA
         solicitud.estado = 'CONFIRMADA';
         //Le asigno el id del viaje a esa solicitud
@@ -30,8 +31,8 @@ function mountAsignarBuque() {
         solicitud.setIdEmpresa(userLogged.id);
         //Le asigno la fecha de su llegada de esa solicitud
         solicitud.setFechaLlegada(viaje.fechaLlegada);
-        //Le resto la cantidad maxima al viaje que se eligio
-        cantidadRestante = viaje.cantidadMaxima - solicitud.cantidadContenedores;
+        //Le resto la cantidad restante al viaje que se eligio
+        viaje.cantidadRestante -= solicitud.cantidadContenedores;
         esPermitido = 'VIAJE ASIGNADO';
         onBackAsignarBuque();
         //Recorro importadores para luego comparar y sumarle 1 a la variable cantConfirmadas de ese importador
@@ -43,9 +44,9 @@ function mountAsignarBuque() {
         }
       }
     } else {
-      alert('Algo salió mal');
+      pErrAsignar.innerHTML = 'Algo salió mal'
     }
-    alert(esPermitido);
+    pErrAsignar.innerHTML = esPermitido;
   }
   
   //Funcion que muestra los select para posteriormente asignar viajes
