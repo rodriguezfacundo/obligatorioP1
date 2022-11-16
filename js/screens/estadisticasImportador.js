@@ -44,6 +44,7 @@ function fechasLlegadas(selector){
 
     let solicitudesOrdenadas = [];
 
+    //Pusheo al array solicitudesOrdenadas las solicitudes que cumplan los campos
     for(let k = 0; k < solicitudes.length; k++){
         if(solicitudes[k].idImportador === userImportadorLogged.id &&
             solicitudes[k].estado === 'CONFIRMADA'){
@@ -51,6 +52,7 @@ function fechasLlegadas(selector){
         }
     }
 
+    //Ordeno por fecha de llegada
     solicitudesOrdenadas.sort(function (a, b) {
         if (a.fechaLlegada > b.fechaLlegada) {
           return 1;
@@ -61,7 +63,7 @@ function fechasLlegadas(selector){
         return 0;
       });
 
-
+      //Pinto las fechas de llegada
     for(let i = 0; i < solicitudesOrdenadas.length; i++){
         if(solicitudesOrdenadas[i].idImportador === userImportadorLogged.id &&
             solicitudesOrdenadas[i].estado === 'CONFIRMADA'){
