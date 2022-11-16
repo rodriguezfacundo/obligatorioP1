@@ -39,20 +39,6 @@ function onRechazarClick(){
     const id = Number(this.getAttribute('data-id'));
     //Cambiamos el estado a rechazada, de la solicitud clickeada
     onChangeStateRechazada(id);
-    for(let i = 0; i < importadores.length; i++){
-        for (let b = 0; b < solicitudes.length; b++){
-            /*Si el id del importador es el mismo que el id del importador de esa solicitud, 
-            y tambien el id de esa solicitud es igual al data id de ese boton, y la solicitud
-            ya se encuentra rechazada
-            */
-            if(importadores[i].id === solicitudes[b].idImportador &&
-                solicitudes[b].id === id &&
-                solicitudes[b].estado === 'RECHAZADA'){
-                    //Me resta uno a la cantidad de solicitudes pendientes de ese importador
-                    importadores[i].cantPendientes -= 1;
-                }
-        }
-    }
     buildTableRechazar();
 }
 

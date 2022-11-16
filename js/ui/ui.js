@@ -20,6 +20,8 @@ function errDatosIncorrectos(){
 //Funcion que nos lleva al inicio nuevamente
 function irInicio(){
     elegirPerfil();
+    userLogged = null;
+    userImportadorLogged = null;
     ocultarMenuImportador();
     onMountMenuEmpresa();
 }

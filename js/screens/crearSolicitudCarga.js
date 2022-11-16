@@ -63,7 +63,6 @@ function onEnviarSolicitud(e){
             /*Si se creo la solicitud, le agrego 1 a cantPendientes de ese importador, y le sumo 1 a cantidad
             de solicitudes a ese importador*/
             if(solicitudCreada){
-                userImportadorLogged.addPendiente(1);
                 userImportadorLogged.addCantSolicitud(1);
                 mountMenuImportador();
                 onMountFormSolicitud();

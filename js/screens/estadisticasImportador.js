@@ -22,18 +22,14 @@ function buildEstadisticas(){
 
 
 //Funcion que realiza la operacion para el porcentaje final de cancelaciones contra la cantidad de solicitudes creadas.
-let estadosTotal = 0;
+let totalCanceladas = 0;
 let pjteFinal = 0;
 function buildPtjeCancelaciones(selector){
     importadores.forEach(function(importador){
         if (importador.id === userImportadorLogged.id){
-            estadosTotal = 
-                userImportadorLogged.cantCanceladas + 
-                userImportadorLogged.cantConfirmadas + 
-                userImportadorLogged.cantIgnoradas + 
-                userImportadorLogged.cantPendientes; 
+            totalCanceladas = userImportadorLogged.cantCanceladas * 100;
         }
-        pjteFinal = estadosTotal / userImportadorLogged.cantSolicitudes
+        pjteFinal = (totalCanceladas / userImportadorLogged.cantSolicitudes).toFixed(2);
     });
     selector.innerHTML = `El total es: ${pjteFinal}%`;
 }

@@ -46,18 +46,6 @@ function onHabilitarClick(){
                     buildTableHabilitar();
                 }
             }
-            /*Verifico que ya esa solicitud se encuentre ignorada, tambien que ese importador se igual al 
-            value de ese boton, y que el id de importador de esa solicitud sea el mismo que el id de ese 
-            importador.
-            */ 
-            if(importadores[k].id === id &&
-                solicitudes[i].idImportador === importadores[k].id &&
-                solicitudes[i].estado === 'IGNORADA'){
-                    //Le sumo 1 a la cantidad de solicitudes ignoradas de ese importador
-                    importadores[k].addIgnorada(1);
-                    //Le resto las solicitudes que estaban canceladas de ese importador
-                    importadores[k].cantCanceladas = importadores[k].cantIgnoradas - importadores[k].cantIgnoradas;
-                }
         }
     }
     onChangeDeshabilitado(id);

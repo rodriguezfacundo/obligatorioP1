@@ -49,7 +49,6 @@ function onCancelarClick(){
     for (let i = 0; i < importadores.length; i++){
         if(importadores[i] === userImportadorLogged){
             importadores[i].addCancelada(1);
-            importadores[i].cantPendientes -= 1;
         }
     }
     buildTable();

@@ -16,11 +16,9 @@ const empresas = [amanecer, raidel, furium, enred,];
 
 //DECLARAMOS LOS IMPORTADORES Y SEGUN EL ESTADO DE SUS VIAJES PRE CARGADOS, LE SUMAMOS 1 A ESE ESTADO
 const importadorSebastian = new Importador(1, 'Sebastian Rodriguez', 'sebastian.importador', true, 'Sebastian.1');
-importadorSebastian.addConfirmada(1);
 importadorSebastian.addCantSolicitud(2);
 
 const importadorMarcelo = new Importador(2, 'Marcelo Perez', 'marcelo.importador', true, 'Marcelo.1');
-importadorMarcelo.addPendiente(1);
 importadorMarcelo.addCantSolicitud(1);
 
 const importadorBrian = new Importador(3, 'Brian Lozano', 'brian.importador', true, 'Brian.1');
@@ -28,7 +26,6 @@ importadorBrian.addCancelada(1);
 importadorBrian.addCantSolicitud(1);
 
 const importadorPablo = new Importador(4, 'Pablo Lopez', 'pablo.importador', true, 'Pablo.1');
-importadorPablo.addIgnorada(1);
 importadorPablo.addCantSolicitud(1);
 
 const importadorWalter = new Importador(5, 'Walter Gutierrez', 'walter.importador', true, 'Walter.1');

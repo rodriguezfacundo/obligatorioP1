@@ -34,14 +34,8 @@ function mountAsignarBuque() {
         //Le resto la cantidad restante al viaje que se eligio
         viaje.cantidadRestante -= solicitud.cantidadContenedores;
         esPermitido = 'VIAJE ASIGNADO';
+        alert(esPermitido);
         onBackAsignarBuque();
-        //Recorro importadores para luego comparar y sumarle 1 a la variable cantConfirmadas de ese importador
-        for (let p = 0; p < importadores.length; p++){
-          if(importadores[p].id === solicitud.idImportador &&
-            selectSolicitud === solicitud.id ){
-              importadores[p].addConfirmada(1);
-            }
-        }
       }
     } else {
       pErrAsignar.innerHTML = 'Algo salió mal'
