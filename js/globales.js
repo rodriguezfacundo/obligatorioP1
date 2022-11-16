@@ -57,3 +57,14 @@ let fechaActual = f.getFullYear() + '-' + mes + '-' + dia;
     }
     return solicitud;
   }
+
+  function getEmpresaNameById(idEmpresa){
+    let nameEmpresa = null;
+    for (let i = 0; i < empresas.length; i++){
+      if (idEmpresa === empresas[i].id){
+        nameEmpresa = empresas[i].nombre;
+      }
+      
+    }
+    return nameEmpresa;
+  }

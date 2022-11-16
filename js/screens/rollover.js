@@ -30,8 +30,13 @@ function onRollover(){
             if (selectSolicitudRollover === solicitud.id &&
                 selectViajeRollover === viaje.id &&
                 viaje.cantidadRestante >= solicitud.cantidadContenedores){
+                    //Le devuelvo la cantidad a esa solicitud
+                    const previousViaje = getViajeByID(solicitud.idViaje)
+                    previousViaje.cantidadRestante += solicitud.cantidadContenedores;
                     //Le asigno el id del viaje a la solicitud 
                     solicitud.setIdViaje(selectViajeRollover);
+                    //Le asigno la fecha de su llegada de esa solicitud
+                    solicitud.setFechaLlegada(viaje.fechaLlegada);
                     //Le resto la cantidad restante al viaje que se eligio
                     viaje.cantidadRestante -= solicitud.cantidadContenedores;
                     rolloverPermitido = 'CAMBIADO CON EXITO';
