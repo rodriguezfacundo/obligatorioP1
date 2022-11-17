@@ -41,18 +41,12 @@ solicitudJuguetes.setIdEmpresa(1);
 solicitudJuguetes.setIdViaje(1);
 solicitudJuguetes.setFechaLlegada('2022-12-02')
 
-const solicitudHielo = new Solicitud(1, 'CARGA_GENERAL', 'Hielo', 'Inglaterra', 10, 1, 'CONFIRMADA');
-solicitudHielo.setIdEmpresa(1);
-solicitudHielo.setIdViaje(1);
-solicitudHielo.setFechaLlegada('2022-11-16')
-
 //ARRAY DE OBJETOS DE SOLICITUDES
 const solicitudes = [
     solicitudJuguetes,
     new Solicitud(2, 'CARGA_PELIGROSA', 'Explosivos', 'Estados Unidos', 5, 2, 'PENDIENTE'),
     new Solicitud(3, 'CARGA_PELIGROSA', 'Acido', 'Chile', 15, 3, 'CANCELADA'),
     new Solicitud(4, 'REFRIGERADO', 'Hielo', 'Escocia', 5, 4, 'IGNORADA'),
-    solicitudHielo,
     new Solicitud(5, 'REFRIGERADO', 'Helado', 'China', 50, 1, 'RECHAZADA'),
 ];
 
