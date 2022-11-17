@@ -47,6 +47,14 @@ function mountCrearViaje(){
     btnBack.addEventListener('click', onBackCrearViaje);
 }
 
+//Creo temporalmente un array de objetos para que me incremente el id luego
+const viajesTemp = [
+    new Viaje(1, 'Buque Amanacer', 10, 'Amanecer', '2022-12-31', 001),
+    new Viaje(2, 'Buque Raidel', 15, 'Raidel', '2022-11-25', 002),
+    new Viaje(3, 'Buque Furium', 5, 'Furium', '2022-10-11', 003),
+    new Viaje (4, 'Buque Enred', 50, 'Enred', '2024-12-31', 004),
+]
+
 //Al esuchar el evento click, se ejecutaran los siguientes pasos para la creacion de un viaje
 function onCrearViaje(e){
     e.preventDefault();
@@ -60,18 +68,16 @@ function onCrearViaje(e){
     const pErrorViaje = document.querySelector('#pErrorViaje');
 
 
+    let newIdViajeBuque = generateAutoIncrementID(viajesTemp);
     const failedValidationViaje = formValidator(viajeFormValidations);
-    let newIdViaje = null; 
-
-    //Recorro todos los viajes para generar un nuevo id distintos a los ya creados
-    for(i = 0; i < empresas.length; i++){
-        newIdViaje = generateAutoIncrementID(empresas[i].viajes);
-    }
-
+   
     //Verifico que se hayan completado todos los campos, sino se alertara 
     if(!failedValidationViaje){
+        //Pusheo el nuevo viajeTemporal;
+        newViaje = new Viaje(newIdViajeBuque, nombreBuque, cantMax, selectEmpresa, fechaLlegada, nro)
+        viajesTemp.push(newViaje);
         //Creo un nuevo viaje donde se almacenará en el array de viajes del usuario loggeado
-        userLogged.addViaje(newIdViaje, nombreBuque, cantMax, selectEmpresa, fechaLlegada, nro)
+        userLogged.addViaje(newIdViajeBuque, nombreBuque, cantMax, selectEmpresa, fechaLlegada, nro)
         onMountCrearViaje();
         mountMenuEmpresa();
         containerForm.reset();
